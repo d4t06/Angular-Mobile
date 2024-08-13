@@ -1,0 +1,68 @@
+<div [class]="loginClasses.wrapper">
+  <div [class]="loginClasses.container">
+    <form (submit)="handleLogin()" [class]="loginClasses.form" [class.disabled]="this.isFetching()">
+      <div [class]="loginClasses.left">
+        <h1 [class]="loginClasses.logo">
+          Angular <span class="text-[#cd1818]">Mobile</span>
+        </h1>
+        <h1 class="text-[26px] text-[#1f1f1f] mt-[10px]">Sign in</h1>
+
+        @if (this.errorMessage) {
+        <p [class]="loginClasses.errorMessage">
+          {{ errorMessage }}
+        </p>
+        }
+      </div>
+      <div [class]="loginClasses.right">
+        <div [class]="loginClasses.inputGroup">
+          <label [class]="loginClasses.label + ' pt-[8px]'" htmlFor="username"
+            >Username
+          </label>
+          <input
+            [(ngModel)]="username"
+            [class]="loginClasses.input"
+            id="username"
+            name="username"
+            type="text"
+          />
+        </div>
+        <div [class]="loginClasses.inputGroup">
+          <label [class]="loginClasses.label" htmlFor="password"
+            >Password</label
+          >
+          <input
+            [class]="loginClasses.input"
+            [(ngModel)]="password"
+            type="text"
+            id="password"
+            name="password"
+            autoComplete="off"
+            required
+          />
+        </div>
+
+        <div class="md:text-right" >
+          <app-button
+            [props]="{
+              class: 'leading-[26px] w-full md:w-auto mt-[20px]',
+              disabled: !this.username || !this.password,
+              type: 'submit'
+            }"
+            t
+          >
+            Sign in
+          </app-button>
+          <p class="mt-[20px]">
+            Don't have an account jet ?,
+            <a
+              class="text-[#cd1818] hover:underline ml-[4px]"
+              [routerLink]="'/register'"
+            >
+              Sign up</a
+            >
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

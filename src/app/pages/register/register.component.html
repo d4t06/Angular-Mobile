@@ -1,0 +1,75 @@
+<div [class]="classes.wrapper">
+    <div [class]="classes.container">
+      <form [class]="classes.form">
+        <div [class]="classes.left">
+          <h1 [class]="classes.logo">
+            Angular <span class="text-[#cd1818]">Mobile</span>
+          </h1>
+          <h1 class="text-[26px] text-[#1f1f1f] mt-[10px]">Sign up</h1>
+  
+          @if (this.errorMsg) {
+          <p [class]="classes.errorMessage">
+            {{ errorMsg }}
+          </p>
+          }
+        </div>
+        <div [class]="classes.right">
+          <div [class]="classes.inputGroup">
+            <label [class]="classes.label + ' pt-[8px]'" htmlFor="username"
+              >Username</label
+            >
+            <input
+              ref="usernameRef"
+              [class]="classes.input"
+              id="username"
+              type="text"
+            />
+          </div>
+          <div [class]="classes.inputGroup">
+            <label [class]="classes.label" htmlFor="password"
+              >Password</label
+            >
+            <input
+              [class]="classes.input"
+              type="text"
+              id="password"
+              autoComplete="off"
+              required
+            />
+          </div>
+
+          <div [class]="classes.inputGroup">
+            <label [class]="classes.label" htmlFor="password"
+              >Confirm password</label
+            >
+            <input
+              [class]="classes.input"
+              type="text"
+              id="password"
+              autoComplete="off"
+              required
+            />
+          </div>
+  
+          <div class="md:text-right">
+            <app-button
+              [props]="{ class: 'leading-[26px] w-full md:w-auto mt-[20px]' }"
+              type="submit"
+            >
+              Sign up
+            </app-button>
+            <p class="mt-[20px]">
+                Already have an account ?,
+              <a
+                class="text-[#cd1818] hover:underline ml-[4px]"
+                [routerLink]="'/login'"
+              >
+                Sign in</a
+              >
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

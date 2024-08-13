@@ -1,0 +1,40 @@
+<ng-template #children>
+  <ng-content />
+</ng-template>
+
+@if (props.href) {
+
+<a
+  [routerLink]="props.href"
+  [class]="
+    ButtonVariant({
+      variant: props.variant,
+      size: props.size,
+      colors: props.colors,
+      border: props.border,
+      fontWeight: props.fontWeight,
+      class: props.class
+    })
+  "
+>
+  <ng-container *ngTemplateOutlet="children" />
+</a>
+} @else {
+<button
+  (click)="click()"
+  [disabled]="this.props.disabled"
+  [type]="this.props.type || 'button'"
+  [class]="
+    ButtonVariant({
+      variant: props.variant,
+      size: props.size,
+      colors: props.colors,
+      border: props.border,
+      fontWeight: props.fontWeight,
+      class: props.class + ' ' + (props.active ? classes.active : '')
+    })
+  "
+>
+  <ng-container *ngTemplateOutlet="children" />
+</button>
+}
