@@ -22,7 +22,7 @@ type PriceRangeFilter = {
   standalone: true,
   selector: 'app-filter',
   template: `
-    <div class="md:ml-[20px] bg-white rounded-xl p-2 md:p-4">
+    <div class="bg-white rounded-xl p-2 md:p-4">
       <h5 class="mb-2 font-medium">Brand</h5>
       <div
         [class]="
@@ -30,7 +30,7 @@ type PriceRangeFilter = {
           (productStore.state.status === 'loading' ? 'disabled' : '')
         "
       >
-        @if (categoryStore.loading) {
+        @if (categoryLoading.getValue()) {
           @for(key of newArray(5); track $index) {
             <app-skeleton
               [props]="{ class: 'h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2' }"
@@ -72,7 +72,7 @@ type PriceRangeFilter = {
           (productStore.state.status === 'loading' ? 'disabled' : '')
         "
       >
-        @if (categoryStore.loading) {
+        @if (categoryLoading.getValue()) {
           @for(key of newArray(5); track $index) {
             <app-skeleton
               [props]="{ class: 'h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2' }"
@@ -121,6 +121,7 @@ export class FilterComponent {
   filterState = this.filterStore.state;
 
   newArray = newArray
+  categoryLoading = this.categoryStore.loadingSubj
 
   showResult(params: Partial<FilterStore['state']>) {
     return this.getProduct.getProducts({ ...params, replace: true });

@@ -1,9 +1,10 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject, isDevMode } from '@angular/core';
 import { ProductStore } from '../stores/product.store';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '../../environment/environment';
 import { FilterStore } from '../stores/filter.store';
+import { delay } from 'rxjs';
 
 const PRO_URL = environment.apiEndpoint + '/products';
 
@@ -74,25 +75,28 @@ export class GetProductService {
       status: params?.replace ? 'loading' : 'more-loading',
     });
 
-    return this.http.get(PRO_URL, { params: getProductParams }).subscribe({
-      next: (res: any) => {
-        const data = res.data;
-        this.productStore.storingProducts({
-          page: getProductParams.page,
-          size: getProductParams.size,
-          count: data.count,
-          products: data.products,
-          status: 'successful',
-          replace: params.replace,
-          category_id: data.category_id
-        });
-      },
-      error: (err) => {
-        console.log(err);
-        this.productStore.storingProducts({
-          status: 'error',
-        });
-      },
-    });
+    return this.http
+      .get(PRO_URL, { params: getProductParams })
+      .pipe(delay(isDevMode() ? 1000 : 0))
+      .subscribe({
+        next: (res: any) => {
+          const data = res.data;
+          this.productStore.storingProducts({
+            page: getProductParams.page,
+            size: getProductParams.size,
+            count: data.count,
+            products: data.products,
+            status: 'successful',
+            replace: params.replace,
+            category_id: data.category_id,
+          });
+        },
+        error: (err) => {
+          console.log(err);
+          this.productStore.storingProducts({
+            status: 'error',
+          });
+        },
+      });
   }
 }

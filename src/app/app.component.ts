@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ComponentRef, ElementRef, ViewChild } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -8,8 +8,8 @@ import {
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { RefreshToken } from './services/refresh-token.service';
-import { AuthStore } from './stores/auth.store';
 import { CategoryStore } from './stores/category.store';
+import { ModalComponent } from './share/components/modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -19,18 +19,20 @@ import { CategoryStore } from './stores/category.store';
     DefaultLayoutComponent,
     RouterOutlet,
     AuthLayoutComponent,
+    ModalComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
   providers: [RefreshToken, CategoryStore],
 })
 export class AppComponent {
   title = 'angular-2';
 
+  @ViewChild('modal') modalComp: ModalComponent;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private refresh: RefreshToken,
+    private refresh: RefreshToken
   ) {}
 
   layout: '' | 'default' | 'auth' | 'dashboard' = '';

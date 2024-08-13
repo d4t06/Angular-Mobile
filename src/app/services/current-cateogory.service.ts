@@ -18,16 +18,12 @@ export class CurrentCategory {
   brandsByCategory = computed(() => this.currentCategory()?.brands || []);
   pricesByCategory = computed(() => this.currentCategory()?.price_ranges || []);
 
-  loading = this.categoryStore.loading;
-
   activeRouteSub: Subscription;
-  routeParams: Record<string, string> = {};
 
   constructor() {
-    this.activeRouteSub = this.categoryStore.finishEmitter
+    this.activeRouteSub = this.categoryStore.loadingSubj
       .pipe(switchMap(() => this.activeRoute.params))
       .subscribe((params) => {
-        this.routeParams = params;
         this.currentCategory.set(
           this.categoryStore.categories.find(
             (c) => c.id === +params['categoryId']
