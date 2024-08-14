@@ -72,13 +72,13 @@ interface Props extends VariantProps<typeof ButtonVariant> {
 })
 export class ButtonComponent {
   @Input() props: Props = { href: '' };
-  @Output() onClick = new EventEmitter<void>();
+  @Output() myClick = new EventEmitter<void>();
 
   ButtonVariant = ButtonVariant;
 
   classes = classes;
 
   click() {
-    this.onClick.emit();
+    this.myClick.emit();
   }
 }

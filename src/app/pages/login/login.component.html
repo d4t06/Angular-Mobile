@@ -1,6 +1,10 @@
 <div [class]="loginClasses.wrapper">
   <div [class]="loginClasses.container">
-    <form (submit)="handleLogin()" [class]="loginClasses.form" [class.disabled]="this.isFetching()">
+    <form
+      (submit)="handleLogin()"
+      [class]="loginClasses.form"
+      [class.disabled]="this.isFetching()"
+    >
       <div [class]="loginClasses.left">
         <h1 [class]="loginClasses.logo">
           Angular <span class="text-[#cd1818]">Mobile</span>
@@ -19,6 +23,7 @@
             >Username
           </label>
           <input
+            #usernameInput
             [(ngModel)]="username"
             [class]="loginClasses.input"
             id="username"
@@ -41,7 +46,7 @@
           />
         </div>
 
-        <div class="md:text-right" >
+        <div class="md:text-right">
           <app-button
             [props]="{
               class: 'leading-[26px] w-full md:w-auto mt-[20px]',

@@ -1,4 +1,11 @@
-import { Component, signal, effect, inject } from '@angular/core';
+import {
+  Component,
+  signal,
+  effect,
+  inject,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ButtonComponent } from '../../share/components/button/button.component';
 import { loginClasses } from '../../share/classes/login';
@@ -24,11 +31,14 @@ export class LoginComponent {
   errorMessage = '';
   isFetching = signal(false);
 
+  @ViewChild('usernameInput', {static: true}) usernameInput: ElementRef;
+
   loginClasses = loginClasses;
+
   LOGIN_URL = environment.apiEndpoint + '/auth/login';
 
-  constructor() {
-    effect(() => {});
+  ngOnInit() {
+    (this.usernameInput?.nativeElement as HTMLInputElement)?.focus();
   }
 
   handleLogin() {
@@ -37,10 +47,14 @@ export class LoginComponent {
     this.isFetching.set(true);
 
     this.http
-      .post(this.LOGIN_URL, {
-        username: this.username,
-        password: this.password,
-      })
+      .post(
+        this.LOGIN_URL,
+        {
+          username: this.username,
+          password: this.password,
+        },
+        { withCredentials: true }
+      )
       .subscribe({
         next: (res: any) => {
           console.log('check res', res);
@@ -63,9 +77,9 @@ export class LoginComponent {
           this.isFetching.set(false);
           //
           if (!+err?.status) {
-            this.errorMessage = 'Login failed';
+            this.errorMessage = 'Login failed !';
           } else if (+err?.status === 401) {
-            this.errorMessage = 'Username or password is incorrect';
+            this.errorMessage = 'Username or password is incorrect !';
           }
         },
         complete: () => this.isFetching.set(false),

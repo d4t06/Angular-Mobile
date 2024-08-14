@@ -16,7 +16,7 @@
           <p>
             hi!, <span class="font-[500]">{{ auth.state.user.username }}</span>
           </p>
-          <button>
+          <button (click)="openModal()" class="hover:text-[#cd1818]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -61,13 +61,18 @@
     <div class="flex justify-between items-center h-[44px]">
       @if (categoryStore.categories.length) {
       <div class="flex space-x-4">
-        @for (cat of categoryStore.categories; track $index) {
+        @for (cat of categoryStore.categories; track $index) { @if (!cat.hidden)
+        {
         <a class="hover:brightness-75 font-medium" [routerLink]="'/' + cat.id">
           {{ cat.category }}
         </a>
-        }
+        } }
       </div>
       }
     </div>
   </div>
 </div>
+
+<app-modal (close)="close()" title="Logout">
+  <app-confirm-modal [loading]="logoutService.isFetching" (accept)="logout()" (close)="close()" />
+</app-modal>

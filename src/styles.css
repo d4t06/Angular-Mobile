@@ -1,22 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 
-
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-   font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-.disabled, button:disabled {
-   opacity: .6;
-   pointer-events: none;
+.disabled,
+button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+}
+
+.cdk-overlay-container:empty {
+  display: none;
 }
 
 @media screen and (min-width: 1024px) {
-    .container {
-       max-width: 1024px;
-    }
- }
+  .container {
+    max-width: 1024px;
+  }
+}

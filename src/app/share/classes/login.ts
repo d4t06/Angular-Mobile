@@ -7,7 +7,7 @@ export const loginClasses = {
   form: 'flex flex-col md:flex-row justify-between',
   right: 'space-y-[16px] mt-[20px] md:mt-0',
   inputGroup: 'flex flex-col space-y-[2px]',
-  label: 'text-[#1f1f1f]',
-  input: 'py-[4px] rounded-[6px] border border-black/15 outline-none px-[10px]',
-  errorMessage: 'bg-red-500/30 text-red-500 p-[6px] rounded-[6px] inline-block',
+  label: 'text-[#1f1f1f] font-medium',
+  input: 'py-[4px] rounded-[6px] font-medium border border-black/15 outline-none px-[10px]',
+  errorMessage: 'bg-red-500 text-white p-[6px] rounded-[6px] inline-block mt-3 font-medium',
 };
