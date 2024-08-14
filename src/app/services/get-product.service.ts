@@ -76,10 +76,10 @@ export class GetProductService {
     });
 
     return this.http
-      .get(PRO_URL, { params: getProductParams })
+      .get<{ data: ProductResponse }>(PRO_URL, { params: getProductParams })
       .pipe(delay(isDevMode() ? 1000 : 0))
       .subscribe({
-        next: (res: any) => {
+        next: (res) => {
           const data = res.data;
           this.productStore.storingProducts({
             page: getProductParams.page,

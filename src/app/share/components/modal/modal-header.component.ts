@@ -10,7 +10,7 @@ import { ButtonComponent } from '../button/button.component';
 
       <app-button
         (myClick)="onCloseModal()"
-        [props]="{ size: 'clear', class: 'p-1' }"
+        [props]="{ size: 'clear', class: 'p-1', colors: 'second' }"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

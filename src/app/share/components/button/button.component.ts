@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import {
-  Attribute,
   Component,
   EventEmitter,
   Input,
@@ -23,7 +22,7 @@ const ButtonVariant = cva(classes.button, {
     },
     size: {
       clear: '',
-      primary: 'px-[15px] py-[5px]',
+      primary: 'px-4 py-1',
     },
     colors: {
       primary:

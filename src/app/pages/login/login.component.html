@@ -3,7 +3,7 @@
     <form
       (submit)="handleLogin()"
       [class]="loginClasses.form"
-      [class.disabled]="this.isFetching()"
+      [class.disabled]="isFetching()"
     >
       <div [class]="loginClasses.left">
         <h1 [class]="loginClasses.logo">
@@ -11,7 +11,7 @@
         </h1>
         <h1 class="text-[26px] text-[#1f1f1f] mt-[10px]">Sign in</h1>
 
-        @if (this.errorMessage) {
+        @if (errorMessage) {
         <p [class]="loginClasses.errorMessage">
           {{ errorMessage }}
         </p>
@@ -50,7 +50,7 @@
           <app-button
             [props]="{
               class: 'leading-[26px] w-full md:w-auto mt-[20px]',
-              disabled: !this.username || !this.password,
+              disabled: !username || !password,
               type: 'submit'
             }"
             t

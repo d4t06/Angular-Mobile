@@ -19,12 +19,12 @@ export class LogoutService {
       .get(environment.apiEndpoint + '/auth/logout', { withCredentials: true })
       .subscribe({
         next: () => {
-          this.authStore.storingAuth({ user: null });
+          this.authStore.storingAuth(null);
           this.router.navigateByUrl('/');
         },
         error: () => {
           this.isFetching = false;
         },
-      })
+      });
   }
 }

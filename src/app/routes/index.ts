@@ -1,15 +1,22 @@
+import { CartPageComponent } from '../pages/cart/cart.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ProductDetailComponent } from '../pages/product-detail/product-detail.component';
 import { ProductComponent } from '../pages/product/product.component';
 import { RegisterComponent } from '../pages/register/register.component';
 
-export const publicRoutes: {
+type Route = {
   path: string;
   title: string;
   page: any;
   layout?: '' | 'auth' | 'dashboard';
-}[] = [
+};
+
+interface PrivateRoute extends Route {
+  role?: 'USER' | 'ADMIN';
+}
+
+export const publicRoutes: Route[] = [
   {
     path: '',
     title: 'Home',
@@ -36,5 +43,13 @@ export const publicRoutes: {
     path: 'product/:productAscii',
     title: 'Product Detail',
     page: ProductDetailComponent,
+  },
+];
+
+export const privateRoutes: PrivateRoute[] = [
+  {
+    path: 'cart',
+    title: 'Cart',
+    page: CartPageComponent,
   },
 ];

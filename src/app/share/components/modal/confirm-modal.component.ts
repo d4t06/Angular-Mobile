@@ -10,7 +10,7 @@ import { ButtonComponent } from '../button/button.component';
       <app-button (myClick)="onClose()" [props]="{ colors: 'second' }">
         Close
       </app-button>
-      <app-button [props]="{loading}" (myClick)="onAccept()">
+      <app-button  [props]="{loading, size: 'clear', class: 'h-full min-w-[80px] px-4'}" (myClick)="onAccept()">
         Yes please
       </app-button>
     </div>

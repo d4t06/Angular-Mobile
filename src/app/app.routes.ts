@@ -6,6 +6,7 @@ export const routes = publicRoutes.map(
     ({
       path: r.path,
       component: r.page,
+      
       data: {
         layout: r.layout || 'default',
       },

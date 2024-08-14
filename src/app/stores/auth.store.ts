@@ -1,5 +1,5 @@
-import { Injectable, signal } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 type User = {
   token: string;
@@ -7,26 +7,14 @@ type User = {
   role: string;
 };
 
-type State = {
-  user: User | null;
-  loading: boolean;
-};
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthStore {
-  state: State = {
-    user: null,
-    loading: true,
-  };
+  user: User | null = null;
+  loading = new BehaviorSubject(true);
 
-  finishEmitter = new Subject<boolean>();
-
-  notifyFinish() {
-    this.finishEmitter.next(false);
-  }
-  storingAuth(payload: Partial<State>) {
-    Object.assign(this.state, payload);
+  storingAuth(payload: User | null) {
+    this.user = payload;
   }
 }
