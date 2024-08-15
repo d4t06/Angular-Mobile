@@ -1,4 +1,4 @@
-import { CartPageComponent } from '../pages/cart/cart.component';
+import { CheckOutPageComponent } from '../pages/check-out/check-out.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { ProductDetailComponent } from '../pages/product-detail/product-detail.component';
@@ -9,12 +9,8 @@ type Route = {
   path: string;
   title: string;
   page: any;
-  layout?: '' | 'auth' | 'dashboard';
+  layout?: Layout | '';
 };
-
-interface PrivateRoute extends Route {
-  role?: 'USER' | 'ADMIN';
-}
 
 export const publicRoutes: Route[] = [
   {
@@ -35,6 +31,12 @@ export const publicRoutes: Route[] = [
     layout: 'auth',
   },
   {
+    path: 'check-out',
+    title: 'Check Out',
+    page: CheckOutPageComponent,
+    layout: 'check-out',
+  },
+  {
     path: ':categoryId',
     title: 'Product',
     page: ProductComponent,
@@ -46,10 +48,10 @@ export const publicRoutes: Route[] = [
   },
 ];
 
-export const privateRoutes: PrivateRoute[] = [
-  {
-    path: 'cart',
-    title: 'Cart',
-    page: CartPageComponent,
-  },
-];
+// export const privateRoutes: PrivateRoute[] = [
+//   {
+//     path: 'cart',
+//     title: 'Cart',
+//     page: CartPageComponent,
+//   },
+// ];

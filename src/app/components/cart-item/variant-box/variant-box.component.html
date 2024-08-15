@@ -1,0 +1,81 @@
+<div [class]="classes.container">
+  <div class="space-y-[4px]">
+    <p [class]="classes.variantLabel">Quantity</p>
+    <div [class]="classes.quantityBox">
+      <button [disabled]="cartItem.item.amount === 1" [class]="classes.button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-[22px]"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+        </svg>
+      </button>
+      <p class="px-[14px] font-[500] leading-[1]">
+        {{ cartItem.item.amount }}
+      </p>
+      <button
+        (click)="handleCartItemAction({change: 'amount',  cartItem: { amount: cartItem.item.amount + 1 },})"
+        [class]="classes.button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-[22px]"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="space-y-[4px]">
+    <p [class]="classes.variantLabel">Color</p>
+    <select [class]="classes.select" name="" id="">
+      @for(c of cartItem.item.product.colors; track $index) {
+      <option [value]="c.id">
+        {{ c.color }}
+      </option>
+      }
+    </select>
+  </div>
+  <div class="space-y-[4px]">
+    <p [class]="classes.variantLabel">Variant</p>
+
+    <select [class]="classes.select" name="" id="">
+      @for(v of cartItem.item.product.variants; track $index) {
+      <option [value]="v.id">
+        {{ v.variant }}
+      </option>
+      }
+    </select>
+
+    <!-- <select
+         ref={storageRef}
+         onChange={(e) =>
+            handleCartItemAction({
+               change: "variant",
+               cartItem: { variant_id: +e.target.value },
+            })
+         }
+         class={classes.select}
+         name=""
+         id=""
+      >
+         {cartItem.item.product.variants.map((s, index) => (
+            <option key={index} value={s.id}>
+               {s.variant}
+            </option>
+         ))}
+      </select> -->
+  </div>
+</div>

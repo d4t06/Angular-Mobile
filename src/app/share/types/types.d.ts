@@ -1,3 +1,5 @@
+type Layout = 'default' | 'auth' | 'dashboard' |'check-out'
+
 type User = {
   token: string;
   username: string;
@@ -264,7 +266,7 @@ type CartItem = {
   product: CartProduct;
 };
 
-type cartItemDetail = {
+type CartItemDetail = {
   item: CartItem;
   price: number;
 };

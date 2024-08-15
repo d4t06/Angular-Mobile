@@ -1,0 +1,33 @@
+<div
+  class="fixed bg-white bottom-0 left-0 right-0 z-[99] border-t-[1px] py-3 md:py-4"
+>
+  <div class="container lg:max-w-[800px]">
+    <div class="flex flex-col md:flex-row items-start -mx-2">
+      <div class="w-full md:w-1/2 px-2">
+        <div class="flex items-center leading-[30px]">
+          <p [class]="classes.h5">Subtotal:</p>
+          <p [class]="classes.h5 + ' ml-auto text-black'">
+            {{ 999999 | money }}
+          </p>
+        </div>
+
+        <div class="flex items-center leading-[30px]">
+          <p [class]="classes.h5">Promo codes:</p>
+          <p [class]="classes.h5 + ' ml-auto'">- 0đ</p>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 px-2">
+        <div class="flex items-center leading-[30px]">
+          <p [class]="classes.h5">Total:</p>
+          <p class="text-xl text-[#cd1818] font-[600] ml-auto">
+            {{ 999999 | money }}
+          </p>
+        </div>
+
+        <app-button [props]="{ class: 'w-full mt-3 py-2 font-semibold' }">
+          Place order
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

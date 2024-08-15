@@ -10,6 +10,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { RefreshToken } from './services/refresh-token.service';
 import { CategoryStore } from './stores/category.store';
 import { ModalComponent } from './share/components/modal/modal.component';
+import { CheckOutLayoutComponent } from "./layouts/check-out/check-out-layout.component";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { ModalComponent } from './share/components/modal/modal.component';
     RouterOutlet,
     AuthLayoutComponent,
     ModalComponent,
-  ],
+    CheckOutLayoutComponent
+],
   templateUrl: './app.component.html',
   providers: [RefreshToken, CategoryStore],
 })
@@ -35,7 +37,7 @@ export class AppComponent {
     private refresh: RefreshToken
   ) {}
 
-  layout: '' | 'default' | 'auth' | 'dashboard' = '';
+  layout: Layout | '' = '';
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
