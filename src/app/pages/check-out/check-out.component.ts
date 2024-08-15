@@ -9,6 +9,7 @@ import { AuthStore } from '@/app/stores/auth.store';
 import { Router } from '@angular/router';
 import { CartStore } from '@/app/stores/cart.store';
 import { CartItemComponent } from '@/app/components/cart-item/cart-item.component';
+import { CheckOutAddressComponent } from "../../components/check-out-address/check-out-address.component";
 
 @Component({
   standalone: true,
@@ -20,8 +21,9 @@ import { CartItemComponent } from '@/app/components/cart-item/cart-item.componen
     PushFrameComponent,
     CheckOutPriceComponent,
     CheckOutSkeleton,
-    CartItemComponent
-  ],
+    CartItemComponent,
+    CheckOutAddressComponent
+],
   providers: [GetCartService],
 })
 export class CheckOutPageComponent {

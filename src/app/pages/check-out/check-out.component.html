@@ -25,10 +25,10 @@
     </app-title>
 
     <div class="mt-2">
-      <app-push-frame>
+      <app-push-frame [props]="{pushAble: 'clear'}">
         <div class="space-y-5">
-          @for (item of cartStore.cartItems; track $index) {
-          <app-cart-item [cartItem]="item" [index]="$index" [checked]="false" />
+          @for (cart of cartStore.cartItems; track $index) {
+          <app-cart-item [cartItem]="cart" [index]="$index" [checked]="cartStore.selectedCartItemId.includes(cart.item.id)" />
           }
         </div>
       </app-push-frame>
@@ -60,11 +60,12 @@
       <span>Address</span>
     </app-title>
     <div class="mt-2">
-      <app-push-frame> address </app-push-frame>
+      <app-push-frame [props]="{pushAble: 'clear'}">
+        
+        <app-check-out-address />
+      </app-push-frame>
     </div>
-    <!-- <PushFrame>
-             <AddressGroup ref={AddressGroupRef} />
-          </PushFrame> -->
+   
   </div>
 
   <div [class]="classes.container">

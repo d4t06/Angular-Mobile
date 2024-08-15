@@ -30,13 +30,10 @@ type PriceRangeFilter = {
           (productStore.state.status === 'loading' ? 'disabled' : '')
         "
       >
-        @if (categoryLoading.getValue()) {
-          @for(key of newArray(5); track $index) {
-            <app-skeleton
-              [props]="{ class: 'h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2' }"
-            />
-          }
-        } @else {
+        @if (categoryLoading.getValue()) { @for(key of newArray(5); track
+        $index) {
+        <app-skeleton myClass="h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2" />
+        } } @else {
         <app-button
           [props]="{
             colors: 'second',
@@ -72,13 +69,10 @@ type PriceRangeFilter = {
           (productStore.state.status === 'loading' ? 'disabled' : '')
         "
       >
-        @if (categoryLoading.getValue()) {
-          @for(key of newArray(5); track $index) {
-            <app-skeleton
-              [props]="{ class: 'h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2' }"
-            />
-          }
-        } @else {
+        @if (categoryLoading.getValue()) { @for(key of newArray(5); track
+        $index) {
+        <app-skeleton myClass="h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2" />
+        } } @else {
         <app-button
           [props]="{
             colors: 'second',
@@ -120,8 +114,8 @@ export class FilterComponent {
 
   filterState = this.filterStore.state;
 
-  newArray = newArray
-  categoryLoading = this.categoryStore.loadingSubj
+  newArray = newArray;
+  categoryLoading = this.categoryStore.loadingSubj;
 
   showResult(params: Partial<FilterStore['state']>) {
     return this.getProduct.getProducts({ ...params, replace: true });

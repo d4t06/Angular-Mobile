@@ -6,7 +6,7 @@
   @if (categoryStore.loadingSubj.getValue() || productState.status === 'loading'
   && +getProductService.routerParams['categoryId'] !== productState.category_id)
   {
-  <app-skeleton [props]="{ class: 'h-[33px] w-[200px]' }" />
+  <app-skeleton myClass="h-[33px] w-[200px]" />
   } @else {
   <h2 class="text-[22px] font-[500]">
     {{ this.currentCategoryService.currentCategory()?.category }}
@@ -39,7 +39,7 @@
           productStore.state.status === 'more-loading') { @for (p of
           newArray(6); track $index) {
           <div class="w-1/2 sm:w-1/3 px-[4px] mt-[8px]">
-            <app-skeleton [props]="{ class: 'min-h-[320px] h-full' }" />
+            <app-skeleton myClass="min-h-[320px] h-full" />
           </div>
           } }
         </div>

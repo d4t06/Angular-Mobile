@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FilterComponent } from '../../components/filter/filter.component';
 import { CategoryStore } from '@/app/stores/category.store';
 import { ButtonComponent } from '../../share/components/button/button.component';
-import { Subscription, switchAll, switchMap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PushFrameComponent } from "../../share/components/push-frame/push-frame.component";
 
 @Component({

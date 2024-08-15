@@ -22,7 +22,7 @@ import { ModalHeaderComponent } from "./modal-header.component";
       ></div>
 
       <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y1/2 z-[99] bg-white p-3 md:p-4 rounded-xl max-w-[calc(90vw-40px)] min-w-[400px]"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[99] bg-white p-3 md:p-4 rounded-xl max-w-[calc(90vw-40px)] min-w-[400px]"
       >
         <app-modal-header (closeModal)="close()" [title]="title" />
         <ng-content />

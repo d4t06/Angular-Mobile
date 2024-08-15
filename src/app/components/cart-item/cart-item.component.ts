@@ -1,10 +1,17 @@
 import { MoneyPipe } from '@/app/pipes/money.pipe';
-import { Component, HostBinding, Input, inject } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Input,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { ButtonComponent } from '../../share/components/button/button.component';
 import { ModalComponent } from '../../share/components/modal/modal.component';
 import { VariantBox } from '../product-item/variant-box/variant-box.component';
 import { VariantBoxComponent } from './variant-box/variant-box.component';
 import { CartAction } from '@/app/services/cart-action.service';
+import { ConfirmModalComponent } from "../../share/components/modal/confirm-modal.component";
 
 @Component({
   selector: 'app-cart-item',
@@ -15,7 +22,8 @@ import { CartAction } from '@/app/services/cart-action.service';
     ModalComponent,
     VariantBox,
     VariantBoxComponent,
-  ],
+    ConfirmModalComponent
+],
   providers: [CartAction],
   templateUrl: './cart-item.component.html',
 })
@@ -26,7 +34,17 @@ export class CartItemComponent {
 
   @HostBinding('class') hostClass = 'block';
 
+  @ViewChild(ModalComponent) modalComponent: ModalComponent;
+
   action = inject(CartAction);
+
+  openModal() {
+    this.modalComponent.open();
+  }
+
+  close() {
+    this.modalComponent.close();
+  }
 
   classes = {
     imageFrame:

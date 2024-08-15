@@ -7,7 +7,9 @@
         <div class="flex items-center leading-[30px]">
           <p [class]="classes.h5">Subtotal:</p>
           <p [class]="classes.h5 + ' ml-auto text-black'">
-            {{ 999999 | money }}
+            @if (totalPrice) {
+            {{ totalPrice | money }}
+            } @else {---}
           </p>
         </div>
 
@@ -20,11 +22,13 @@
         <div class="flex items-center leading-[30px]">
           <p [class]="classes.h5">Total:</p>
           <p class="text-xl text-[#cd1818] font-[600] ml-auto">
-            {{ 999999 | money }}
+            @if (totalPrice) {
+            {{ totalPrice | money }}
+            } @else {---}
           </p>
         </div>
 
-        <app-button [props]="{ class: 'w-full mt-3 py-2 font-semibold' }">
+        <app-button  [props]="{ class: 'w-full mt-3 py-2 font-semibold', disabled: !cartStore.selectedCartItemId.length}">
           Place order
         </app-button>
       </div>

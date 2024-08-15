@@ -1,0 +1,73 @@
+<app-title className="mb-[10px]">
+   <svg
+     xmlns="http://www.w3.org/2000/svg"
+     fill="none"
+     viewBox="0 0 24 24"
+     stroke-width="2"
+     stroke="currentColor"
+     class="w-6"
+   >
+     <path
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"
+     />
+     <path
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       d="M6 6h.008v.008H6V6Z"
+     />
+   </svg>
+
+   <span>Chính sách bảo hành</span>
+ </app-title>
+
+ <app-push-frame>
+   <div class="space-y-3">
+     @if(productDetail.status.getValue() === 'loading') {
+     <app-skeleton myClass="w-[full] h-[30px] " />
+     <app-skeleton myClass="w-[full] h-[30px] " />
+     } @else {
+     <p class="flex items-center space-x-2">
+       <svg
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="2"
+         stroke="currentColor"
+         class="w-5 flex-shrink-0"
+       >
+         <path
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"
+         />
+       </svg>
+
+       <span class="font-medium text-[#3f3f3f]"
+         >Hư gì đổi nấy 12 tháng tại 3384 siêu thị toàn quốc</span
+       >
+     </p>
+     <p class="flex items-center space-x-2">
+       <svg
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="2"
+         stroke="currentColor"
+         class="w-5 flex-shrink-0"
+       >
+         <path
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"
+         />
+       </svg>
+       <span class="font-medium text-[#3f3f3f]">
+         Bảo hành chính hãng điện thoại 12 tháng tại các trung tâm bảo hành
+         hãng
+       </span>
+     </p>
+     }
+   </div>
+ </app-push-frame>

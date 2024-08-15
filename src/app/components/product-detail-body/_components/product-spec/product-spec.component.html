@@ -1,0 +1,30 @@
+<app-push-frame>
+  @if(productDetail.status.getValue() === 'loading') {
+  <app-skeleton myClass="pt-[100%] rounded-lg mb-[20px]" />
+  <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
+  } @if(productDetail.status.getValue() === 'successful' &&
+  productDetail.product) {
+
+  <img
+    [src]="productDetail.product.image_url"
+    class="max-w-[60%] w-[250px] mx-auto"
+    alt=""
+  />
+
+  <div className="mt-[20px] mb-[10px]">
+    <table class="">
+      <tbody class="[&_td]:px-2 [&_td]:py-3 [&_tr]:even:bg-[#ccc]">
+        @for (attributeId of
+        productDetail.product.category.attribute_order.split("_"); track $index)
+        {
+        <app-attribute-item
+          [attributeId]="+attributeId"
+          [product]="productDetail.product"
+        />
+        }
+      </tbody>
+    </table>
+  </div>
+
+  }
+</app-push-frame>

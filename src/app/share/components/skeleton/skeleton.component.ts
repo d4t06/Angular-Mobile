@@ -1,9 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
-
-type Props = {
-  class?: string;
-};
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -11,10 +7,12 @@ type Props = {
   imports: [NgClass],
   template: `
     <div
-      [class]="'animate-pulse rounded-md bg-[#e1e1e1] ' + this.props.class || ''"
+      [class]="'animate-pulse rounded-md bg-[#e1e1e1] ' + this.myClass"
     ></div>
   `,
 })
 export class SkeletonComponent {
-  @Input() props: Props = { };
+  @Input() myClass: string = '';
+
+  @HostBinding('class') hostClass = 'block'
 }

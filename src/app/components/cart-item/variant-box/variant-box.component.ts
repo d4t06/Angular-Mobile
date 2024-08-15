@@ -53,7 +53,7 @@ export class VariantBoxComponent {
   classes = {
     container:
       'flex flex-col space-y-[10px] md:space-y-0 md:space-x-[16px] md:flex-row ',
-    variantLabel: 'text-[#3f3f3f] font-[500]',
+    variantLabel: 'text-[#3f3f3f] font-[500] text-sm',
     button: 'hover:bg-[#e1e1e1] border-[#e1e1e1] h-full px-[6px]',
 
     select:

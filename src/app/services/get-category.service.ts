@@ -12,9 +12,8 @@ export class GetCategoryService {
   http = inject(HttpClient);
 
   getCategories() {
-    this.categoryStore.loadingSubj.next(false);
+    // this.categoryStore.loadingSubj.next(false);
 
-    return;
     this.http
       .get(CAT_URL)
       .pipe(delay(isDevMode() ? 600 : 0))
@@ -28,7 +27,6 @@ export class GetCategoryService {
           });
 
           this.categoryStore.loadingSubj.next(false);
-          this.categoryStore.loadingSubj2.next(false);
         },
         error: (err) => {
           console.log(err);

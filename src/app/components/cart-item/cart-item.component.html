@@ -7,7 +7,13 @@
         alt=""
       />
 
-      <button [class]="classes.checkBtn">
+      <button
+        [class]="
+          classes.checkBtn +
+          (checked ? ' bg-[#cd1818] text-white' : ' bg-[#fff] border-[2px]')
+        "
+        (click)="action.actions({ variant: 'select', id: cartItem.item.id })"
+      >
         @if (checked) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,24 +40,26 @@
           {{ cartItem.item.product.product }}
         </h5>
 
-        <app-cart-item-variant-box [cartItem]="cartItem" [actions]="action.actions" [index]="index" />
-        <!-- <VariantList
-               index={index}
-               isFetching={isFetching}
-               actions={actions}
-               cartItem={cartItem} -->
+        <app-cart-item-variant-box
+          [cartItem]="cartItem"
+          [actions]="action.actions"
+          [index]="index"
+        />
       </div>
 
-      <h4 class="text-lg text-[#3f3f3f] font-[500] ml-auto md:mr-[50px]">
+      <h5 class="text-[#3f3f3f] font-[500] ml-auto md:mr-[50px]">
         Price:
         <span class="text-[#cd1818] font-[600]">
           {{ cartItem.price | money }}
         </span>
-      </h4>
+      </h5>
     </div>
   </div>
 
-  <app-button [props]="{ colors: 'second', size: 'clear', class: 'px-1 py-2' }">
+  <app-button
+    (myClick)="openModal()"
+    [props]="{ colors: 'second', size: 'clear', class: 'px-1 py-2' }"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -69,4 +77,19 @@
   </app-button>
 </div>
 
-<app-modal title="Wait a minute !"> </app-modal>
+<app-modal [title]="'Delete \'' + cartItem.item.product.product + '\''">
+  <app-confirm-modal
+  (accept)="
+      action.actions({ variant: 'delete', id: cartItem.item.id, index })
+      "
+    (close)="close()"
+    [loading]="action.isFetching"
+    [desc]="'Định xóa hả gì ?'"
+  >
+    <img
+      src="https://zalo-api.zadn.vn/api/emoticon/sticker/webpc?eid=46991&size=130"
+      class="mx-auto"
+      alt=""
+    />
+  </app-confirm-modal>
+</app-modal>

@@ -2,7 +2,11 @@
   <div class="space-y-[4px]">
     <p [class]="classes.variantLabel">Quantity</p>
     <div [class]="classes.quantityBox">
-      <button [disabled]="cartItem.item.amount === 1" [class]="classes.button">
+      <button
+        [disabled]="cartItem.item.amount === 1"
+        [class]="classes.button + ' border-r'"
+        (click)="handleCartItemAction({change: 'amount',  cartItem: { amount: cartItem.item.amount -1 },})"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -18,8 +22,8 @@
         {{ cartItem.item.amount }}
       </p>
       <button
+        [class]="classes.button + ' border-l'"
         (click)="handleCartItemAction({change: 'amount',  cartItem: { amount: cartItem.item.amount + 1 },})"
-        [class]="classes.button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +44,15 @@
   </div>
   <div class="space-y-[4px]">
     <p [class]="classes.variantLabel">Color</p>
-    <select [class]="classes.select" name="" id="">
+    <select
+      #color
+      [class]="classes.select"
+      (change)="handleCartItemAction({
+      change: 'variant',
+      cartItem: { color_id: +(color.value)},
+
+   })"
+    >
       @for(c of cartItem.item.product.colors; track $index) {
       <option [value]="c.id">
         {{ c.color }}
@@ -51,31 +63,21 @@
   <div class="space-y-[4px]">
     <p [class]="classes.variantLabel">Variant</p>
 
-    <select [class]="classes.select" name="" id="">
+    <select
+      #variant
+      [class]="classes.select"
+      (change)="
+        handleCartItemAction({
+          change: 'variant',
+          cartItem: { variant_id: +variant.value }
+        })
+      "
+    >
       @for(v of cartItem.item.product.variants; track $index) {
       <option [value]="v.id">
         {{ v.variant }}
       </option>
       }
     </select>
-
-    <!-- <select
-         ref={storageRef}
-         onChange={(e) =>
-            handleCartItemAction({
-               change: "variant",
-               cartItem: { variant_id: +e.target.value },
-            })
-         }
-         class={classes.select}
-         name=""
-         id=""
-      >
-         {cartItem.item.product.variants.map((s, index) => (
-            <option key={index} value={s.id}>
-               {s.variant}
-            </option>
-         ))}
-      </select> -->
   </div>
 </div>
