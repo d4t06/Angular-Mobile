@@ -3,12 +3,22 @@
 } @else {
 
 <div class="mt-8">
-  @if (categoryStore.loadingSubj.getValue() || productState.status === 'loading'
-  && +getProductService.routerParams['categoryId'] !== productState.category_id)
-  {
-  <app-skeleton myClass="h-[33px] w-[200px]" />
+  @if (categoryStore.loadingSubj.getValue()) {
+  <app-skeleton myClass="pt-[25%] rounded-xl" />
   } @else {
-  <h2 class="text-[22px] font-[500]">
+  <app-slider
+    className="pt-[25%]"
+    [sliderImages]="
+      currentCategoryService.currentCategory()?.category_slider?.slider
+        ?.slider_images || []
+    "
+  />
+  } @if (categoryStore.loadingSubj.getValue() || productState.status ===
+  'loading' && +getProductService.routerParams['categoryId'] !==
+  productState.category_id) {
+  <app-skeleton myClass="h-[33px] w-[200px] mt-8" />
+  } @else {
+  <h2 class="text-[22px] font-[500] mt-8">
     {{ this.currentCategoryService.currentCategory()?.category }}
     <span class="text-[#333] text-[18px]">
       ({{ productStore.state.count }} products)
@@ -45,7 +55,6 @@
         </div>
         }
       </div>
-
       <div class="my-[30px] text-center">
         <app-button
           (onClick)="handleGetMore()"

@@ -1,4 +1,4 @@
-import { Component, Inject, effect, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { GetProductService } from '../../services/get-product.service';
 import { ProductStore } from '../../stores/product.store';
 import { CurrentCategory } from '../../services/current-cateogory.service';
@@ -14,7 +14,8 @@ import { FilterComponent } from '../../components/filter/filter.component';
 import { CategoryStore } from '@/app/stores/category.store';
 import { ButtonComponent } from '../../share/components/button/button.component';
 import { Subscription } from 'rxjs';
-import { PushFrameComponent } from "../../share/components/push-frame/push-frame.component";
+import { PushFrameComponent } from '../../share/components/push-frame/push-frame.component';
+import { SliderComponent } from "../../components/slider/slider.component";
 
 @Component({
   selector: 'app-product',
@@ -29,7 +30,8 @@ import { PushFrameComponent } from "../../share/components/push-frame/push-frame
     SortComponent,
     FilterComponent,
     ButtonComponent,
-    PushFrameComponent
+    PushFrameComponent,
+    SliderComponent
 ],
 })
 export class ProductComponent {
@@ -48,21 +50,10 @@ export class ProductComponent {
   newArray = newArray;
 
   ngOnInit() {
-    // this.activeRouteSub = this.categoryStore.finishEmitter
-    //   .pipe(switchMap(() => this.activeRouter.params))
-    //   .subscribe(() => {
-    //     console.log('get product', +this.currentCategoryService.routeParams['categoryId'],
-    //     this.productState.category_id);
-    //     this.getProductService.getProducts({ replace: true });
-    //   });
     this.activeRouter.params.subscribe(() => {
       this.getProductService.getProducts({ replace: true });
     });
   }
-
-  // ngOnDestroy() {
-  //   this.activeRouteSub.unsubscribe();
-  // }
 
   handleGetMore() {
     this.getProductService.getProducts({ page: this.productState.page + 1 });

@@ -7,10 +7,10 @@ import { PushFrameComponent } from '../../../../../share/components/push-frame/p
   standalone: true,
   selector: 'app-product-info-skeleton',
   template: `
-    <app-skeleton myClass="w-[300px] h-[32px]  " />
+    <app-skeleton myClass="w-[300px] h-[36px]  " />
 
     <app-push-frame [props]="{ class: 'mt-5' }">
-      <div class="space-y-3">
+      <div class="space-y-5">
         <div class="">
           <app-skeleton myClass="w-[70px] h-[20px]" />
           <div class="flex flex-wrap -mx-1">

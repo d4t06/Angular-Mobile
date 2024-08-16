@@ -2,13 +2,13 @@
 <app-product-info-skeleton />
 } @if (productDetail.status.getValue() === 'successful' &&
 productDetail.product) {
-<h1 class="text-2xl font-semibold">
+<h1 class="text-3xl">
   {{ productDetail.product.product }}
 </h1>
 
 @if (this.currentCombine) {
 <app-push-frame [props]="{ pushAble: 'clear', class: 'mt-5' }">
-  <div class="space-y-3">
+  <div class="space-y-5">
     <div class="">
       <h5 [class]="classes.label">Storage</h5>
       <div class="flex -m-x-1 flex-wrap w-full">

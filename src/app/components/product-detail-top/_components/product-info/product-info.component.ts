@@ -1,5 +1,11 @@
 import { ProductDetailStore } from '@/app/stores/product-detail.store';
-import { Component, HostBinding, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Output,
+  inject,
+} from '@angular/core';
 import { ButtonComponent } from '../../../../share/components/button/button.component';
 import { GetDefautlCombine } from '@/app/services/get-default-combine';
 import { ProductInfoVariantItem } from './_components/product-info-variant-item.component';
@@ -26,7 +32,9 @@ const classes = {
   providers: [GetDefautlCombine],
 })
 export class ProductInfoComponent {
-  @HostBinding('class') hostClass = 'block'
+  @Output() changeColor = new EventEmitter<ProductColor>();
+
+  @HostBinding('class') hostClass = 'block';
   productDetail = inject(ProductDetailStore);
 
   getDefaultCobimeService = inject(GetDefautlCombine);
@@ -45,8 +53,11 @@ export class ProductInfoComponent {
           this.productDetail.product
         );
 
-        this.color = this.getDefaultCobimeService.color;
+        const color = this.getDefaultCobimeService.color;
+        this.color = color;
+        
         this.variant = this.getDefaultCobimeService.variant;
+        this.changeColor.emit(color);
       }
     });
   }

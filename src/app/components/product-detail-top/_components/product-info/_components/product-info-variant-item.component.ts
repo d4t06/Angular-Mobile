@@ -22,7 +22,7 @@ import { ButtonComponent } from '@/app/share/components/button/button.component'
       (myClick)="handleSetVariant()"
     >
       <span>{{ variant.variant }}</span>
-      <span className="text-sm font-[500]">
+      <span class="text-sm font-[500]">
         {{ defaultCombine.price | money }}
       </span>
     </app-button>
