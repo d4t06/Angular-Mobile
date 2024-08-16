@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 type User = {
-  token: string;
-  username: string;
-  role: string;
+   token: string;
+   username: string;
+   role: string;
 };
 
 @Injectable({
-  providedIn: 'root',
+   providedIn: 'root',
 })
 export class AuthStore {
-  user: User | null = null;
-  loading = new BehaviorSubject(true);
+   user: User | null = null;
+   loading = new BehaviorSubject(true);
 
-  storingAuth(payload: User | null) {
-    this.user = payload;
-  }
+   storingAuth(payload: User | null) {
+      this.user = payload;
+   }
 }

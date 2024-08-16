@@ -4,13 +4,12 @@ import { TitleComponent } from '@/app/share/components/title/title.component';
 import { ProductDetailStore } from '@/app/stores/product-detail.store';
 import { Component, inject } from '@angular/core';
 
-
 @Component({
-  standalone: true,
-  selector: 'app-policy',
-  imports: [PushFrameComponent, SkeletonComponent, TitleComponent],
-  templateUrl: './policy.component.html',
+   standalone: true,
+   selector: 'app-policy',
+   imports: [PushFrameComponent, SkeletonComponent, TitleComponent],
+   templateUrl: './policy.component.html',
 })
 export class PolicyComponent {
-  productDetail = inject(ProductDetailStore);
+   productDetail = inject(ProductDetailStore);
 }

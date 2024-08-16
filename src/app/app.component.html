@@ -1,13 +1,11 @@
- @switch (layout) { 
-
-    @case ('auth') {
-        <app-auth-layout />
-    }
-    @case ('check-out') {
+@switch (layout) {
+   @case ('auth') {
+      <app-auth-layout />
+   }
+   @case ('check-out') {
       <app-check-out-layout />
-    }
-    @default {
-        <app-default-layout/>
-    }
+   }
+   @default {
+      <app-default-layout />
+   }
 }
-

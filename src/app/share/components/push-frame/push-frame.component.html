@@ -1,11 +1,10 @@
 <div
-  [class]="
-    pushFrameVariant({
-      size: props.size,
-      pushAble: props.pushAble,
-      class: props.class
-    })
-  "
->
-  <ng-content />
+   [class]="
+      pushFrameVariant({
+         size: props.size,
+         pushAble: props.pushAble,
+         class: props.class,
+      })
+   ">
+   <ng-content />
 </div>

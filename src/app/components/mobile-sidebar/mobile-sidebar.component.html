@@ -1,0 +1,54 @@
+<div
+   class="fixed z-[99] top-[0] left-0 bottom-0 w-[260px] max-w-[60vw] hidden max-[768px]:block transition-[transform, opacity] duration-[.3s] translate-x-[-100%] opacity-[0]"
+   [class]="isOpen ? '!translate-x-0 !opacity-[1]' : ''">
+   <div class="h-[50px] px-2 bg-white flex items-center">
+      <p class="font-medium text-lg text-[#3f3f3f]">
+         {{ authStore.user?.username }}
+      </p>
+      <div class="absolute right-[10px]">
+         <app-button
+            (myClick)="close()"
+            [props]="{ class: 'p-1', size: 'clear', colors: 'second' }">
+            <svg
+               xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="2"
+               stroke="currentColor"
+               class="w-5">
+               <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18 18 6M6 6l12 12" />
+            </svg>
+         </app-button>
+      </div>
+   </div>
+
+   <div class="h-full bg-[#f3f4f5]">
+      <div class="p-2 space-y-2">
+         @if (categoryStore.loadingSubj.getValue()) {
+            @for (key of newArray(4); track $index) {
+               <app-skeleton myClass="h-4" />
+            }
+         } @else {
+            @for (cat of categoryStore.categories; track $index) {
+               <p (click)="handleNavigate('/' + cat.id)" class="font-medium py-1">
+                  {{ cat.category }}
+               </p>
+            }
+         }
+      </div>
+   </div>
+   <div class="absolute bottom-8 w-full flex justify-center">
+      @if (!authStore.user) {
+         <app-button [props]="{ href: '/login' }"> Login </app-button>
+      } @else {
+         <app-button [props]="{ href: '/login' }"> Logout </app-button>
+      }
+   </div>
+</div>
+
+@if (isOpen) {
+   <div (click)="close()" class="fixed inset-0 z-[9] bg-black/40"></div>
+}

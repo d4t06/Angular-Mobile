@@ -1,59 +1,52 @@
 <div [class]="className + ' relative'">
-  <div [class]="classes.container" #slider>
-    @for (sliderImage of sliderImages; track $index) {
-    <div [class]="classes.sliderItem">
-      <img
-        [src]="sliderImage.image.image_url"
-        alt=""
-        class="w-full object-cover object-center"
-      />
-    </div>
-    }
-  </div>
-  <button
-    [class]="classes.button + ' ' + classes.leftArrow"
-    (click)="sliderService.previous()"
-    [disabled]="!sliderImages.length"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-5 md:w-6"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-      />
-    </svg>
-  </button>
-  <button
-    [class]="classes.button + ' ' + classes.rightArrow"
-    (click)="sliderService.next()"
-    [disabled]="!sliderImages.length"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-5 md:w-6"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-      />
-    </svg>
-  </button>
+   <div [class]="classes.container" #slider>
+      @for (sliderImage of sliderImages; track $index) {
+         <div [class]="classes.sliderItem">
+            <img
+               [src]="sliderImage.image.image_url"
+               alt=""
+               class="w-full object-cover object-center" />
+         </div>
+      }
+   </div>
+   <button
+      [class]="classes.button + ' ' + classes.leftArrow"
+      (click)="sliderService.previous()"
+      [disabled]="!sliderImages.length">
+      <svg
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="1.5"
+         stroke="currentColor"
+         class="w-5 md:w-6">
+         <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+   </button>
+   <button
+      [class]="classes.button + ' ' + classes.rightArrow"
+      (click)="sliderService.next()"
+      [disabled]="!sliderImages.length">
+      <svg
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 24 24"
+         stroke-width="1.5"
+         stroke="currentColor"
+         class="w-5 md:w-6">
+         <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>
+   </button>
 
-  <div [class]="classes.sliderIndex">
-    <span>{{ sliderService.curIndex }}</span>
-    <span> / </span>
-    <span>{{ sliderImages.length || 1 }}</span>
-  </div>
+   <div [class]="classes.sliderIndex">
+      <span>{{ sliderService.curIndex }}</span>
+      <span> / </span>
+      <span>{{ sliderImages.length || 1 }}</span>
+   </div>
 </div>

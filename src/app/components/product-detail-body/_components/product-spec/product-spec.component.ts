@@ -6,36 +6,35 @@ import { SkeletonComponent } from '@/app/share/components/skeleton/skeleton.comp
 import { GetCategoryAttribute } from './getCategoryAttribute.service';
 
 export interface AttributePair extends CategoryAttribute {
-  value: string;
+   value: string;
 }
 
 @Component({
-  standalone: true,
-  selector: 'app-product-spec',
-  templateUrl: 'product-spec.component.html',
-  imports: [PushFrameComponent, SkeletonComponent],
-  providers: [GetCategoryAttribute],
+   standalone: true,
+   selector: 'app-product-spec',
+   templateUrl: 'product-spec.component.html',
+   imports: [PushFrameComponent, SkeletonComponent],
+   providers: [GetCategoryAttribute],
 })
 export class ProductSpecComponent {
-  productDetail = inject(ProductDetailStore);
+   productDetail = inject(ProductDetailStore);
 
-  newArray = newArray;
+   newArray = newArray;
 
-  attributeOrder: string[] = [];
-  attributePair: AttributePair[] = [];
+   attributeOrder: string[] = [];
+   attributePair: AttributePair[] = [];
 
-  getAttributePair = inject(GetCategoryAttribute);
+   getAttributePair = inject(GetCategoryAttribute);
 
-  constructor() {}
+   constructor() {}
 
-  ngOnInit() {
-    this.productDetail.status.subscribe(() => {
-      if (this.productDetail.product) {
-        this.getAttributePair.getAttributePair(this.productDetail.product);
+   ngOnInit() {
+      this.productDetail.status.subscribe(() => {
+         if (this.productDetail.product) {
+            this.getAttributePair.getAttributePair(this.productDetail.product);
 
-        this.attributePair =
-          this.getAttributePair.attributePair;
-      }
-    });
-  }
+            this.attributePair = this.getAttributePair.attributePair;
+         }
+      });
+   }
 }

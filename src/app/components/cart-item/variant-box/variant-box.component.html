@@ -1,83 +1,89 @@
 <div [class]="classes.container">
-  <div class="space-y-[4px]">
-    <p [class]="classes.variantLabel">Quantity</p>
-    <div [class]="classes.quantityBox">
-      <button
-        [disabled]="cartItem.item.amount === 1"
-        [class]="classes.button + ' border-r'"
-        (click)="handleCartItemAction({change: 'amount',  cartItem: { amount: cartItem.item.amount -1 },})"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          class="w-[22px]"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-        </svg>
-      </button>
-      <p class="px-[14px] font-[500] leading-[1]">
-        {{ cartItem.item.amount }}
-      </p>
-      <button
-        [class]="classes.button + ' border-l'"
-        (click)="handleCartItemAction({change: 'amount',  cartItem: { amount: cartItem.item.amount + 1 },})"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          class="w-[22px]"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-  <div class="space-y-[4px]">
-    <p [class]="classes.variantLabel">Color</p>
-    <select
-      #color
-      [class]="classes.select"
-      (change)="handleCartItemAction({
-      change: 'variant',
-      cartItem: { color_id: +(color.value)},
+   <div class="space-y-[4px]">
+      <p [class]="classes.variantLabel">Quantity</p>
+      <div [class]="classes.quantityBox">
+         <button
+            [disabled]="cartItem.item.amount === 1"
+            [class]="classes.button + ' border-r'"
+            (click)="
+               handleCartItemAction({
+                  change: 'amount',
+                  cartItem: { amount: cartItem.item.amount - 1 },
+               })
+            ">
+            <svg
+               xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="2"
+               stroke="currentColor"
+               class="w-5">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+            </svg>
+         </button>
+         <p class="px-[14px] font-[500] leading-[1]">
+            {{ cartItem.item.amount }}
+         </p>
+         <button
+            [class]="classes.button + ' border-l'"
+            (click)="
+               handleCartItemAction({
+                  change: 'amount',
+                  cartItem: { amount: cartItem.item.amount + 1 },
+               })
+            ">
+            <svg
+               xmlns="http://www.w3.org/2000/svg"
+               fill="none"
+               viewBox="0 0 24 24"
+               stroke-width="2"
+               stroke="currentColor"
+               class="w-5">
+               <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+         </button>
+      </div>
+   </div>
+   <div class="space-y-[4px]">
+      <p [class]="classes.variantLabel">Color</p>
+      <select
+         #color
+         [(ngModel)]="cartItem.item.color_id"
+         [class]="classes.select"
+         (change)="
+            handleCartItemAction({
+               change: 'variant',
+               cartItem: { color_id: +color.value },
+            })
+         ">
+         @for (c of cartItem.item.product.colors; track $index) {
+            <option [value]="c.id">
+               {{ c.color }}
+            </option>
+         }
+      </select>
+   </div>
+   <div class="space-y-[4px]">
+      <p [class]="classes.variantLabel">Variant</p>
 
-   })"
-    >
-      @for(c of cartItem.item.product.colors; track $index) {
-      <option [value]="c.id">
-        {{ c.color }}
-      </option>
-      }
-    </select>
-  </div>
-  <div class="space-y-[4px]">
-    <p [class]="classes.variantLabel">Variant</p>
-
-    <select
-      #variant
-      [class]="classes.select"
-      (change)="
-        handleCartItemAction({
-          change: 'variant',
-          cartItem: { variant_id: +variant.value }
-        })
-      "
-    >
-      @for(v of cartItem.item.product.variants; track $index) {
-      <option [value]="v.id">
-        {{ v.variant }}
-      </option>
-      }
-    </select>
-  </div>
+      <select
+         #variant
+         [(ngModel)]="cartItem.item.variant_id"
+         [class]="classes.select"
+         (change)="
+            handleCartItemAction({
+               change: 'variant',
+               cartItem: { variant_id: +variant.value },
+            })
+         ">
+         @for (v of cartItem.item.product.variants; track $index) {
+            <option [value]="v.id">
+               {{ v.variant }}
+            </option>
+         }
+      </select>
+   </div>
 </div>

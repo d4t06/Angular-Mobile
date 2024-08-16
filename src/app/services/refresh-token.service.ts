@@ -6,33 +6,33 @@ import { delay } from 'rxjs';
 
 @Injectable()
 export class RefreshToken {
-  authStore = inject(AuthStore);
-  http = inject(HttpClient);
+   authStore = inject(AuthStore);
+   http = inject(HttpClient);
 
-  refresh() {
-    // this.authStore.loading.next(false)
+   refresh() {
+      // this.authStore.loading.next(false)
 
-    return this.http
-      .get(environment.apiEndpoint + '/auth/refresh', { withCredentials: true })
-      .pipe(delay(isDevMode() ? 600 : 0))
-      .subscribe({
-        next: (res: any) => {
-          const data = res.data as AuthResponse;
+      return this.http
+         .get(environment.apiEndpoint + '/auth/refresh', { withCredentials: true })
+         .pipe(delay(isDevMode() ? 600 : 0))
+         .subscribe({
+            next: (res: any) => {
+               const data = res.data as AuthResponse;
 
-          this.authStore.storingAuth({
-            role: data.userInfo.role,
-            token: data.token,
-            username: data.userInfo.username,
-          });
+               this.authStore.storingAuth({
+                  role: data.userInfo.role,
+                  token: data.token,
+                  username: data.userInfo.username,
+               });
 
-          return data.token;
-        },
-        error: () => {
-          this.authStore.loading.next(false);
-        },
-        complete: () => {
-          this.authStore.loading.next(false);
-        },
-      });
-  }
+               return data.token;
+            },
+            error: () => {
+               this.authStore.loading.next(false);
+            },
+            complete: () => {
+               this.authStore.loading.next(false);
+            },
+         });
+   }
 }

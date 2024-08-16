@@ -1,39 +1,33 @@
 <app-push-frame>
-  @if(productDetail.status.getValue() === 'loading') {
-  <app-skeleton myClass="pt-[70%] rounded-lg mb-[20px]" />
-  <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
-  <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
-  <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
-  } @if(productDetail.status.getValue() === 'successful' &&
-  productDetail.product) {
+   @if (productDetail.status.getValue() === 'loading') {
+      <app-skeleton myClass="pt-[70%] rounded-lg mb-[20px]" />
+      <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
+      <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
+      <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
+   }
+   @if (productDetail.status.getValue() === 'successful' && productDetail.product) {
+      <img
+         [src]="productDetail.product.image_url"
+         class="max-w-[60%] w-[250px] mx-auto mt-2"
+         alt="" />
 
-  <img
-    [src]="productDetail.product.image_url"
-    class="max-w-[60%] w-[250px] mx-auto mt-2"
-    alt=""
-  />
-
-  <div class="mt-5">
-    <table class="">
-      <tbody class="[&_td]:px-2 [&_td]:py-3">
-        @for (attribute of attributePair; track $index) {
-
-        <tr class="group">
-          <td
-            class="group-even:bg-[#f3f4f5] w-[40%] text-[#3f3f3f] font-medium rounded-[6px_0_0_6px]"
-          >
-            {{ attribute?.attribute || "---" }}
-          </td>
-          <td
-            class="group-even:bg-[#f3f4f5] text-[#3f3f3f] text-sm font-medium leading-[1.6] rounded-[0_6px_6px_0]"
-          >
-            {{ attribute?.value || "---" }}
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-
-  }
+      <div class="mt-5">
+         <table class="">
+            <tbody class="[&_td]:px-2 [&_td]:py-3">
+               @for (attribute of attributePair; track $index) {
+                  <tr class="group">
+                     <td
+                        class="group-even:bg-[#f3f4f5] w-[40%] text-[#3f3f3f] font-medium rounded-[6px_0_0_6px]">
+                        {{ attribute?.attribute || '---' }}
+                     </td>
+                     <td
+                        class="group-even:bg-[#f3f4f5] text-[#3f3f3f] text-sm font-medium leading-[1.6] rounded-[0_6px_6px_0]">
+                        {{ attribute?.value || '---' }}
+                     </td>
+                  </tr>
+               }
+            </tbody>
+         </table>
+      </div>
+   }
 </app-push-frame>

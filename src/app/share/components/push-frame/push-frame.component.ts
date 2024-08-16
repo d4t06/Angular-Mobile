@@ -2,43 +2,42 @@ import { Component, Input } from '@angular/core';
 import { cva } from 'class-variance-authority';
 
 const classes = {
-  container: `relative rounded before:absolute before:content-[""] before:inset-0 z-0 before:bg-[#fff] before:border-[#ccc] before:z-[-1] `,
+   container: `relative rounded before:absolute before:content-[""] before:inset-0 z-0 before:bg-[#fff] before:border-[#ccc] before:z-[-1] `,
 };
 
 const pushFrameVariant = cva(classes.container, {
-  variants: {
-    size: {
-      primary:
-        'before:rounded-2xl before:bg-white rounded-2xl before:border-[4px] before:shadow-[0_4px_0_#ccc] p-[14px] active:translate-y-[4px]',
-      small:
-        'before:rounded-lg rounded-lg before:border-[2px] before:shadow-[0_2px_0_#ccc] p-[10px] active:translate-y-[2px]',
-    },
-    pushAble: {
-      primary: 'active:before:shadow-none',
-      clear: 'active:translate-y-[none]',
-    },
-  },
+   variants: {
+      size: {
+         primary:
+            'before:rounded-2xl before:bg-white rounded-2xl before:border-[4px] before:shadow-[0_4px_0_#ccc] p-[14px] active:translate-y-[4px]',
+         small: 'before:rounded-lg rounded-lg before:border-[2px] before:shadow-[0_2px_0_#ccc] p-[10px] active:translate-y-[2px]',
+      },
+      pushAble: {
+         primary: 'active:before:shadow-none',
+         clear: 'active:translate-y-[none]',
+      },
+   },
 
-  defaultVariants: {
-    size: 'primary',
-    pushAble: 'primary',
-  },
+   defaultVariants: {
+      size: 'primary',
+      pushAble: 'primary',
+   },
 });
 
 type Props = {
-  size?: 'primary' | 'small' | null | undefined;
-  pushAble?: 'primary' | 'clear' | null | undefined;
-  class?: string;
+   size?: 'primary' | 'small' | null | undefined;
+   pushAble?: 'primary' | 'clear' | null | undefined;
+   class?: string;
 };
 
 @Component({
-  selector: 'app-push-frame',
-  standalone: true,
-  imports: [],
-  templateUrl: './push-frame.component.html',
+   selector: 'app-push-frame',
+   standalone: true,
+   imports: [],
+   templateUrl: './push-frame.component.html',
 })
 export class PushFrameComponent {
-  @Input() props: Props = {};
+   @Input() props: Props = {};
 
-  pushFrameVariant = pushFrameVariant;
+   pushFrameVariant = pushFrameVariant;
 }

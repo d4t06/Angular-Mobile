@@ -11,39 +11,39 @@ import { newArray } from '@/app/share/utils/appHelper';
 import { CurrentCategory } from '@/app/services/current-cateogory.service';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    SliderComponent,
-    SkeletonComponent,
-    NoProductComponent,
-    ProductItemComponent,
-  ],
-  providers: [GetProductService, CurrentCategory],
-  templateUrl: './home.component.html',
+   selector: 'app-home',
+   standalone: true,
+   imports: [
+      SliderComponent,
+      SkeletonComponent,
+      NoProductComponent,
+      ProductItemComponent,
+   ],
+   providers: [GetProductService, CurrentCategory],
+   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  productStore = inject(ProductStore);
-  categoryStore = inject(CategoryStore);
+   productStore = inject(ProductStore);
+   categoryStore = inject(CategoryStore);
 
-  getProductService = inject(GetProductService);
-  currentCategory = inject(CurrentCategory);
-  activeRoute = inject(ActivatedRoute);
+   getProductService = inject(GetProductService);
+   currentCategory = inject(CurrentCategory);
+   activeRoute = inject(ActivatedRoute);
 
-  sliderImages: SliderImage[] = [];
-  newArray = newArray;
+   sliderImages: SliderImage[] = [];
+   newArray = newArray;
 
-  ngOnInit() {
-    this.categoryStore.loadingSubj.subscribe(() => {
-      const homeCategory = this.categoryStore.categories.find(
-        (c) => c.category_ascii === 'home'
-      );
-      if (homeCategory)
-        this.sliderImages = homeCategory.category_slider.slider.slider_images;
-    });
+   ngOnInit() {
+      this.categoryStore.loadingSubj.subscribe(() => {
+         const homeCategory = this.categoryStore.categories.find(
+            c => c.category_ascii === 'home'
+         );
+         if (homeCategory)
+            this.sliderImages = homeCategory.category_slider.slider.slider_images;
+      });
 
-    this.activeRoute.params.subscribe(() => {
-      this.getProductService.getProducts({ replace: true, size: 6 });
-    });
-  }
+      this.activeRoute.params.subscribe(() => {
+         this.getProductService.getProducts({ replace: true, size: 6 });
+      });
+   }
 }

@@ -1,11 +1,8 @@
-import { Component, Input } from "@angular/core";
-
+import { Component, Input } from '@angular/core';
 
 @Component({
-    standalone: true,
-    selector: 'app-checkbox',
-    template: ``
+   standalone: true,
+   selector: 'app-checkbox',
+   template: ``,
 })
-
-export class CheckBoxComponent {
-}
+export class CheckBoxComponent {}

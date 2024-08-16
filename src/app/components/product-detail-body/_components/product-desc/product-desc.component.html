@@ -1,12 +1,8 @@
 @if (productDetail.status.getValue() === 'loading') {
-<app-skeleton myClass="w-full h-[500px]" />
-
-} @if (productDetail.status.getValue() === 'successful' &&
-productDetail.product) {
-
-<div
-  class="content space-y-[14px] [&>p]:text-[#495057] [&>h5]:font-[500] [&>h5]:text-xl [&>img]:rounded-[8px] [&>img]:max-h-[350px] [&>img]:mx-auto"
-  [innerHTML]="productDetail.product.description.content | html"
-></div>
-
+   <app-skeleton myClass="w-full h-[500px]" />
+}
+@if (productDetail.status.getValue() === 'successful' && productDetail.product) {
+   <div
+      class="content space-y-[14px] [&>p]:text-[#495057] [&>h5]:font-[500] [&>h5]:text-xl [&>img]:rounded-[8px] [&>img]:max-h-[350px] [&>img]:mx-auto"
+      [innerHTML]="productDetail.product.description.content | html"></div>
 }

@@ -1,18 +1,9 @@
 <div class="mt-8">
-   @if (categoryStore.loadingSubj.getValue()) {
-      <app-skeleton myClass="pt-[25%] rounded-xl" />
-   } @else {
-      <app-slider className="pt-[25%]" [sliderImages]="sliderImages" />
-   }
-   @if (
-      categoryStore.loadingSubj.getValue() ||
-      (productStore.state.status === 'loading' &&
-         +getProductService.routerParams['categoryId'] !== productStore.state.category_id)
-   ) {
-      <app-skeleton myClass="h-[33px] w-[200px] mt-8" />
-   } @else {
-      <h2 class="text-[22px] font-[500] mt-8">New products</h2>
-   }
+   <h2 class="text-[22px] font-[500] mt-8">
+      Search result for '{{ getProductService.routerParams['searchKey'] }}'
+   </h2>
+
+   <app-sort />
 
    <div class="mt-5">
       <div class="bg-white rounded-2xl p-2 md:p-3">
@@ -42,6 +33,19 @@
                }
             </div>
          }
+
+         <div class="text-center my-6">
+            <app-button
+               (myClick)="handleGetMore()"
+               [props]="{
+                  disabled: !(
+                     productStore.state.count >
+                     productStore.state.page * productStore.state.size
+                  ),
+               }">
+               More
+            </app-button>
+         </div>
       </div>
    </div>
 </div>

@@ -1,60 +1,75 @@
 @if (productDetail.status.getValue() === 'loading') {
-<app-product-info-skeleton />
-} @if (productDetail.status.getValue() === 'successful' &&
-productDetail.product) {
-<h1 class="text-3xl">
-  {{ productDetail.product.product }}
-</h1>
+   <app-product-info-skeleton />
+}
+@if (productDetail.status.getValue() === 'successful' && productDetail.product) {
+   <h1 class="text-3xl">
+      {{ productDetail.product.product }}
+   </h1>
 
-@if (this.currentCombine) {
-<app-push-frame [props]="{ pushAble: 'clear', class: 'mt-5' }">
-  <div class="space-y-5">
-    <div class="">
-      <h5 [class]="classes.label">Storage</h5>
-      <div class="flex -m-x-1 flex-wrap w-full">
-        @for (v of productDetail.product.variants; track $index) {
-        <div class="px-1 mt-1 w-1/3">
-          <app-product-info-variant-item
-            [active]="currentCombine.variant_id === v.id"
-            [defaultCombine]="findDefaultCombineOfVariant(v)"
-            [variant]="v"
-            (myClick)="variant = v"
-          />
-        </div>
-        }
-      </div>
-    </div>
+   @if (this.currentCombine) {
+      <app-push-frame [props]="{ pushAble: 'clear', class: 'mt-5' }">
+         <div class="space-y-5">
+            <div class="">
+               <h5 [class]="classes.label">Storage</h5>
+               <div class="flex -m-x-1 flex-wrap w-full">
+                  @for (v of productDetail.product.variants; track $index) {
+                     <div class="px-1 mt-1 w-1/3">
+                        <app-product-info-variant-item
+                           [active]="currentCombine.variant_id === v.id"
+                           [defaultCombine]="findDefaultCombineOfVariant(v)"
+                           [variant]="v"
+                           (myClick)="variant = v" />
+                     </div>
+                  }
+               </div>
+            </div>
 
-    <div class="">
-      <h5 [class]="classes.label">Color</h5>
-      <div class="flex -m-x-1 flex-wrap">
-        @for (c of productDetail.product.colors; track $index) {
-        <div class="px-1 mt-1 w-1/3">
-          <app-button
-            [props]="{
-              class: 'h-[60px] !flex-col px-[4px] w-full',
-              colors: 'second',
-              active: currentCombine.color_id === c.id
-            }"
-            (myClick)="color = c"
-          >
-            {{ c.color }}
-          </app-button>
-        </div>
-        }
-      </div>
-    </div>
+            <div class="">
+               <h5 [class]="classes.label">Color</h5>
+               <div class="flex -m-x-1 flex-wrap">
+                  @for (c of productDetail.product.colors; track $index) {
+                     <div class="px-1 mt-1 w-1/3">
+                        <app-button
+                           [props]="{
+                              class: 'h-[60px] !flex-col px-[4px] w-full',
+                              colors: 'second',
+                              active: currentCombine.color_id === c.id,
+                           }"
+                           (myClick)="color = c">
+                           {{ c.color }}
+                        </app-button>
+                     </div>
+                  }
+               </div>
+            </div>
 
-    <div class="">
-      <h5 [class]="classes.label">Price</h5>
-      <h1 class="text-3xl mt-1 font-semibold text-[#cd1818]">
-        {{ currentCombine.price | money }}
-      </h1>
-    </div>
-  </div>
-</app-push-frame>
+            <div class="">
+               <h5 [class]="classes.label">Price</h5>
+               <h1 class="text-3xl mt-1 font-semibold text-[#cd1818]">
+                  {{ currentCombine.price | money }}
+               </h1>
+            </div>
+         </div>
+      </app-push-frame>
 
-<app-button [props]="{ class: 'font-semibold text w-full h-[40px] mt-5' }">
-  BUY NOW
-</app-button>
-} }
+      <app-button
+         (myClick)="handleBuyProduct()"
+         [props]="{
+            class: 'font-semibold text w-full h-[40px] mt-5',
+            loading: cartActions.isFetching,
+         }">
+         BUY NOW
+      </app-button>
+   }
+}
+
+<app-modal title="SOS !">
+   <img
+      src="https://zalo-api.zadn.vn/api/emoticon/sticker/webpc?eid=46970&size=130"
+      class="mx-auto"
+      alt="" />
+
+   <p class="my-3 font-medium">Không đăng nhập rối sao mua hả ?</p>
+
+   <app-button (myClick)="close()">Cút</app-button>
+</app-modal>

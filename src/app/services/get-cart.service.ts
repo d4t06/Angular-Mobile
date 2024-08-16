@@ -7,45 +7,45 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class GetCartService {
-  cartStore = inject(CartStore);
-  auth = inject(AuthStore);
-  router = inject(Router);
+   cartStore = inject(CartStore);
+   auth = inject(AuthStore);
+   router = inject(Router);
 
-  status: 'loading' | 'successful' | 'error' = 'loading';
+   status: 'loading' | 'successful' | 'error' = 'loading';
 
-  http = inject(HttpClient);
+   http = inject(HttpClient);
 
-  getCart() {
-    if (this.auth.user)
-      this.http
-        .get<{ data: CartItemDetail[] }>(
-          `${environment.apiEndpoint}/cart-items/${this.auth.user.username}`
-        )
-        .subscribe({
-          next: (res) => {
-            this.cartStore.setCart({
-              variant: 'replace',
-              cartItems: res.data,
+   getCart() {
+      if (this.auth.user)
+         this.http
+            .get<{
+               data: CartItemDetail[];
+            }>(`${environment.apiEndpoint}/cart-items/${this.auth.user.username}`)
+            .subscribe({
+               next: res => {
+                  this.cartStore.setCart({
+                     variant: 'replace',
+                     cartItems: res.data,
+                  });
+               },
+               error: () => {
+                  this.status = 'error';
+               },
+               complete: () => {
+                  this.status = 'successful';
+               },
             });
-          },
-          error: () => {
-            this.status = 'error';
-          },
-          complete: () => {
-            this.status = 'successful';
-          },
-        });
-  }
+   }
 
-  //   constructor() {
-  //     this.auth.loading.subscribe((loading) => {
-  //       if (!loading) {
-  //         console.log('check loading', loading);
+   //   constructor() {
+   //     this.auth.loading.subscribe((loading) => {
+   //       if (!loading) {
+   //         console.log('check loading', loading);
 
-  //         if (!this.auth.user) this.router.navigateByUrl('/');
-  //         else
-  //           this.getCart()
-  //       }
-  //     });
-  //   }
+   //         if (!this.auth.user) this.router.navigateByUrl('/');
+   //         else
+   //           this.getCart()
+   //       }
+   //     });
+   //   }
 }

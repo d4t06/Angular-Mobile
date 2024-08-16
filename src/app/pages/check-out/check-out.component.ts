@@ -9,42 +9,42 @@ import { AuthStore } from '@/app/stores/auth.store';
 import { Router } from '@angular/router';
 import { CartStore } from '@/app/stores/cart.store';
 import { CartItemComponent } from '@/app/components/cart-item/cart-item.component';
-import { CheckOutAddressComponent } from "../../components/check-out-address/check-out-address.component";
+import { CheckOutAddressComponent } from '../../components/check-out-address/check-out-address.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-check-out',
-  templateUrl: './check-out.component.html',
-  imports: [
-    TitleComponent,
-    ButtonComponent,
-    PushFrameComponent,
-    CheckOutPriceComponent,
-    CheckOutSkeleton,
-    CartItemComponent,
-    CheckOutAddressComponent
-],
-  providers: [GetCartService],
+   standalone: true,
+   selector: 'app-check-out',
+   templateUrl: './check-out.component.html',
+   imports: [
+      TitleComponent,
+      ButtonComponent,
+      PushFrameComponent,
+      CheckOutPriceComponent,
+      CheckOutSkeleton,
+      CartItemComponent,
+      CheckOutAddressComponent,
+   ],
+   providers: [GetCartService],
 })
 export class CheckOutPageComponent {
-  authStore = inject(AuthStore);
-  cartStore = inject(CartStore)
+   authStore = inject(AuthStore);
+   cartStore = inject(CartStore);
 
-  router = inject(Router);
-  getCartService = inject(GetCartService);
+   router = inject(Router);
+   getCartService = inject(GetCartService);
 
-  classes = {
-    container: '',
-  };
+   classes = {
+      container: '',
+   };
 
-  ngOnInit() {
-    this.authStore.loading.subscribe((loading) => {
-      if (!loading) {
-        console.log('check loading', loading);
+   ngOnInit() {
+      this.authStore.loading.subscribe(loading => {
+         if (!loading) {
+            console.log('check loading', loading);
 
-        if (!this.authStore.user) this.router.navigateByUrl('/');
-        else this.getCartService.getCart();
-      }
-    });
-  }
+            if (!this.authStore.user) this.router.navigateByUrl('/');
+            else this.getCartService.getCart();
+         }
+      });
+   }
 }

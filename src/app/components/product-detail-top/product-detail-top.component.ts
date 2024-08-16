@@ -6,18 +6,13 @@ import { SkeletonComponent } from '@/app/share/components/skeleton/skeleton.comp
 import { SliderComponent } from '../slider/slider.component';
 
 @Component({
-  selector: 'app-product-detail-top',
-  standalone: true,
-  imports: [
-    PolicyComponent,
-    ProductInfoComponent,
-    SkeletonComponent,
-    SliderComponent,
-  ],
-  templateUrl: './product-detail-top.component.html',
+   selector: 'app-product-detail-top',
+   standalone: true,
+   imports: [PolicyComponent, ProductInfoComponent, SkeletonComponent, SliderComponent],
+   templateUrl: './product-detail-top.component.html',
 })
 export class ProductDetailTopComponent {
-  productDetail = inject(ProductDetailStore);
+   productDetail = inject(ProductDetailStore);
 
-  sliderImages: SliderImage[] = [];
+   sliderImages: SliderImage[] = [];
 }

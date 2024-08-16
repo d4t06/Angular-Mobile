@@ -15,47 +15,47 @@ import { CategoryStore } from '@/app/stores/category.store';
 import { ButtonComponent } from '../../share/components/button/button.component';
 import { Subscription } from 'rxjs';
 import { PushFrameComponent } from '../../share/components/push-frame/push-frame.component';
-import { SliderComponent } from "../../components/slider/slider.component";
+import { SliderComponent } from '../../components/slider/slider.component';
 
 @Component({
-  selector: 'app-product',
-  standalone: true,
-  templateUrl: './product.component.html',
-  providers: [GetProductService, CurrentCategory],
-  imports: [
-    ProductItemComponent,
-    NoProductComponent,
-    ProductSkeletonComponent,
-    SkeletonComponent,
-    SortComponent,
-    FilterComponent,
-    ButtonComponent,
-    PushFrameComponent,
-    SliderComponent
-],
+   selector: 'app-product',
+   standalone: true,
+   templateUrl: './product.component.html',
+   providers: [GetProductService, CurrentCategory],
+   imports: [
+      ProductItemComponent,
+      NoProductComponent,
+      ProductSkeletonComponent,
+      SkeletonComponent,
+      SortComponent,
+      FilterComponent,
+      ButtonComponent,
+      PushFrameComponent,
+      SliderComponent,
+   ],
 })
 export class ProductComponent {
-  productStore = inject(ProductStore);
-  authStore = inject(AuthStore);
-  categoryStore = inject(CategoryStore);
+   productStore = inject(ProductStore);
+   authStore = inject(AuthStore);
+   categoryStore = inject(CategoryStore);
 
-  activeRouter = inject(ActivatedRoute);
+   activeRouter = inject(ActivatedRoute);
 
-  getProductService = inject(GetProductService);
-  currentCategoryService = inject(CurrentCategory);
+   getProductService = inject(GetProductService);
+   currentCategoryService = inject(CurrentCategory);
 
-  productState = this.productStore.state;
-  activeRouteSub: Subscription;
+   productState = this.productStore.state;
+   activeRouteSub: Subscription;
 
-  newArray = newArray;
+   newArray = newArray;
 
-  ngOnInit() {
-    this.activeRouter.params.subscribe(() => {
-      this.getProductService.getProducts({ replace: true });
-    });
-  }
+   // ngOnInit() {
+   //    this.activeRouter.params.subscribe(() => {
+   //       this.getProductService.getProducts({ replace: true });
+   //    });
+   // }
 
-  handleGetMore() {
-    this.getProductService.getProducts({ page: this.productState.page + 1 });
-  }
+   handleGetMore() {
+      this.getProductService.getProducts({ page: this.productState.page + 1 });
+   }
 }
