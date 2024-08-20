@@ -49,11 +49,11 @@ export class ProductComponent {
 
    newArray = newArray;
 
-   // ngOnInit() {
-   //    this.activeRouter.params.subscribe(() => {
-   //       this.getProductService.getProducts({ replace: true });
-   //    });
-   // }
+   ngOnInit() {
+      this.activeRouter.params.subscribe(() => {
+         this.getProductService.getProducts({ replace: true });
+      });
+   }
 
    handleGetMore() {
       this.getProductService.getProducts({ page: this.productState.page + 1 });

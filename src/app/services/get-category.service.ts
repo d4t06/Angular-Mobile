@@ -12,8 +12,8 @@ export class GetCategoryService {
    http = inject(HttpClient);
 
    getCategories() {
-      this.categoryStore.loadingSubj.next(false);
-      return;
+      // this.categoryStore.loadingSubj.next(false);
+      // return;
 
       this.http
          .get(CAT_URL)
