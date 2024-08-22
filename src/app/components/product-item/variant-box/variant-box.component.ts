@@ -13,7 +13,7 @@ import { ButtonComponent } from '../../../share/components/button/button.compone
             active,
          }"
          (click)="handleSetActiveVariant()">
-         {{ variant.variant }}
+         {{ variant.name }}
       </app-button>
    `,
 })

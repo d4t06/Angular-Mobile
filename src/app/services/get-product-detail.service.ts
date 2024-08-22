@@ -22,7 +22,7 @@ export class GetProductDetailService {
       return this.http
          .get<{
             data: ProductDetail;
-         }>(`${this.PRODUCT_URL}/${this.routerParams['productAscii']}`)
+         }>(`${this.PRODUCT_URL}/${this.routerParams['productId']}`)
          .subscribe({
             next: res => {
                this.productDetailStore.setProduct(res.data);

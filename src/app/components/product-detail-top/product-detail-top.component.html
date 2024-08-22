@@ -1,7 +1,7 @@
 <div class="md:flex flex-wrap md:mx-[-12px]">
    <div class="md:w-7/12 md:px-[12px]">
       @if (productDetail.status.getValue() === 'loading') {
-         <app-skeleton myClass="w-full pt-[50%] rounded-xl" />
+         <app-skeleton className="w-full pt-[50%] rounded-xl" />
       } @else {
          <div class="sm:sticky top-8">
             <app-slider className="pt-[60%] md:pt-[50%]" [sliderImages]="sliderImages" />
@@ -13,8 +13,8 @@
       <app-product-info
          (changeColor)="sliderImages = $event.product_slider.slider.slider_images" />
 
-      <div class="mt-7">
+      <!-- <div class="mt-7">
          <app-policy />
-      </div>
+      </div> -->
    </div>
 </div>

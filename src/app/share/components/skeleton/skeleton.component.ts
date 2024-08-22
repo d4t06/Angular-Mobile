@@ -6,11 +6,11 @@ import { Component, HostBinding, Input } from '@angular/core';
    selector: 'app-skeleton',
    imports: [NgClass],
    template: `
-      <div [class]="'animate-pulse rounded-md bg-[#e1e1e1] ' + this.myClass"></div>
+      <div [class]="'animate-pulse rounded-md bg-[#e1e1e1] ' + this.className"></div>
    `,
 })
 export class SkeletonComponent {
-   @Input() myClass: string = '';
+   @Input() className: string = '';
 
    //   @HostBinding('class') hostClass = 'block'
 }

@@ -43,7 +43,7 @@ export const publicRoutes: Route[] = [
       page: ProductComponent,
    },
    {
-      path: 'product/:productAscii',
+      path: 'product/:productId',
       title: 'Product Detail',
       page: ProductDetailComponent,
    },

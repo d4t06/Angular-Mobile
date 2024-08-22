@@ -90,7 +90,7 @@ export class CartAction {
                      if (change === 'whole') {
                         const foundedCartItemIndex = this.cartStore.cartItems.findIndex(
                            c =>
-                              c.item.product_ascii === cartItem.product_ascii &&
+                              c.item.product_id === cartItem.product_id &&
                               c.item.color_id === cartItem.color_id &&
                               c.item.variant_id === cartItem.variant_id
                         );

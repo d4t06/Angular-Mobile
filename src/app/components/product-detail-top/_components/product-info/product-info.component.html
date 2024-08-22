@@ -3,7 +3,7 @@
 }
 @if (productDetail.status.getValue() === 'successful' && productDetail.product) {
    <h1 class="text-3xl">
-      {{ productDetail.product.product }}
+      {{ productDetail.product.name }}
    </h1>
 
    @if (this.currentCombine) {
@@ -36,7 +36,7 @@
                               active: currentCombine.color_id === c.id,
                            }"
                            (myClick)="color = c">
-                           {{ c.color }}
+                           {{ c.name }}
                         </app-button>
                      </div>
                   }

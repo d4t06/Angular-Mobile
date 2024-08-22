@@ -19,8 +19,8 @@
 <app-push-frame>
    <div class="space-y-3">
       @if (productDetail.status.getValue() === 'loading') {
-         <app-skeleton myClass="w-[full] h-[30px] " />
-         <app-skeleton myClass="w-[full] h-[30px] mt-3" />
+         <app-skeleton className="w-[full] h-[30px] " />
+         <app-skeleton className="w-[full] h-[30px] mt-3" />
       } @else {
          <p class="flex items-center space-x-2">
             <svg

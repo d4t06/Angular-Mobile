@@ -62,11 +62,11 @@ export class Search {
       this.searchResult = [];
    }
 
-   handleProductDetail(productAscii: string) {
+   handleProductDetail(productId: number) {
       this.focus = false;
       this.isFetching = false;
 
-      this.router.navigateByUrl(`/product/${productAscii}`);
+      this.router.navigateByUrl(`/product/${productId}`);
    }
 
    handleSubmit() {

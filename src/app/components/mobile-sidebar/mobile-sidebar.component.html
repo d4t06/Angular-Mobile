@@ -29,12 +29,12 @@
       <div class="p-2 space-y-2">
          @if (categoryStore.loadingSubj.getValue()) {
             @for (key of newArray(4); track $index) {
-               <app-skeleton myClass="h-4" />
+               <app-skeleton className="h-4" />
             }
          } @else {
             @for (cat of categoryStore.categories; track $index) {
                <p (click)="handleNavigate('/' + cat.id)" class="font-medium py-1">
-                  {{ cat.category }}
+                  {{ cat.name }}
                </p>
             }
          }

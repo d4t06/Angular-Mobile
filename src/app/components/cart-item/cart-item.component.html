@@ -29,7 +29,7 @@
       <div [class]="classes.variant">
          <div class="h-full">
             <h5 class="text-[18px] font-[500] mb-[14px] md:mb-[4px]">
-               {{ cartItem.item.product.product }}
+               {{ cartItem.item.product.name }}
             </h5>
 
             <app-cart-item-variant-box
@@ -65,7 +65,7 @@
    </app-button>
 </div>
 
-<app-modal [title]="'Delete \'' + cartItem.item.product.product + '\''">
+<app-modal [title]="'Delete \'' + cartItem.item.product.name + '\''">
    <app-confirm-modal
       (accept)="action.actions({ variant: 'delete', id: cartItem.item.id, index })"
       (close)="close()"

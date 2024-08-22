@@ -3,11 +3,12 @@ import { Component, inject, Input } from '@angular/core';
 import { TitleComponent } from '../../share/components/title/title.component';
 import { ProductDescComponent } from './_components/product-desc/product-desc.component';
 import { ProductSpecComponent } from './_components/product-spec/product-spec.component';
+import { ProductRatingComponent } from "./_components/product-rating/product-rating.component";
 
 @Component({
    selector: 'app-product-detail-body',
    standalone: true,
-   imports: [TitleComponent, ProductDescComponent, ProductSpecComponent],
+   imports: [TitleComponent, ProductDescComponent, ProductSpecComponent, ProductRatingComponent],
    templateUrl: './product-detail-body.component.html',
 })
 export class ProductDetailBodyComponent {

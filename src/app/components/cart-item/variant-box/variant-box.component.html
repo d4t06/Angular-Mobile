@@ -61,7 +61,7 @@
          ">
          @for (c of cartItem.item.product.colors; track $index) {
             <option [value]="c.id">
-               {{ c.color }}
+               {{ c.name }}
             </option>
          }
       </select>
@@ -81,7 +81,7 @@
          ">
          @for (v of cartItem.item.product.variants; track $index) {
             <option [value]="v.id">
-               {{ v.variant }}
+               {{ v.name }}
             </option>
          }
       </select>

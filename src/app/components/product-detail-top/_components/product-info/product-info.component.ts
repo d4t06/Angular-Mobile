@@ -102,7 +102,7 @@ export class ProductInfoComponent {
       const schema: CartItemSchema = {
          amount: 1,
          color_id: this.color.id,
-         product_ascii: this.productDetail.product.product_ascii,
+         product_id: this.productDetail.product.id,
          username: this.authStore.user.username,
          variant_id: this.variant.id,
       };

@@ -1,46 +1,36 @@
 <div class="pt-8">
    @if (categoryStore.loadingSubj.getValue()) {
-      <app-skeleton myClass="pt-[25%] rounded-xl" />
+   <app-skeleton className="pt-[25%] rounded-xl" />
    } @else {
-      <app-slider className="pt-[25%]" [sliderImages]="sliderImages" />
-   }
-   @if (
-      categoryStore.loadingSubj.getValue() ||
-      (productStore.state.status === 'loading' &&
-         +getProductService.routerParams['categoryId'] !== productStore.state.category_id)
-   ) {
-      <app-skeleton myClass="h-[33px] w-[200px] mt-8" />
+   <app-slider className="pt-[25%]" [sliderImages]="sliderImages" />
+   } @if ( categoryStore.loadingSubj.getValue() || (productStore.state.status ===
+   'loading' && +getProductService.routerParams['categoryId'] !==
+   productStore.state.category_id) ) {
+   <app-skeleton className="h-[33px] w-[200px] mt-8" />
    } @else {
-      <h2 class="text-[22px] font-[500] mt-8">New products</h2>
+   <h2 class="text-[22px] font-[500] mt-8">New products</h2>
    }
 
    <div class="mt-5">
       <div class="bg-white rounded-2xl p-2 md:p-3">
-         @if (
-            this.productStore.state.status === 'successful' &&
-            !productStore.state.products.length
-         ) {
-            <app-no-product />
+         @if ( (this.productStore.state.status === 'successful' &&
+         !productStore.state.products.length) || this.productStore.state.status ===
+         'error' ) {
+         <app-no-result />
          } @else {
-            <div class="flex flex-wrap mx-[-4px]">
-               @if (productStore.state.status !== 'loading') {
-                  @for (p of productStore.state.products; track $index) {
-                     <div class="w-1/2 sm:w-1/4 px-[4px] mt-[8px]">
-                        <app-product-item [product]="p" />
-                     </div>
-                  }
-               }
-               @if (
-                  productStore.state.status === 'loading' ||
-                  productStore.state.status === 'more-loading'
-               ) {
-                  @for (p of newArray(8); track $index) {
-                     <div class="w-1/2 sm:w-1/4 px-[4px] mt-[8px]">
-                        <app-skeleton myClass="min-h-[320px] h-full" />
-                     </div>
-                  }
-               }
+         <div class="flex flex-wrap mx-[-4px]">
+            @if (productStore.state.status !== 'loading') { @for (p of
+            productStore.state.products; track $index) {
+            <div class="w-1/2 sm:w-1/4 px-[4px] mt-[8px]">
+               <app-product-item [product]="p" />
             </div>
+            } } @if ( productStore.state.status === 'loading' || productStore.state.status
+            === 'more-loading' ) { @for (p of newArray(8); track $index) {
+            <div class="w-1/2 sm:w-1/4 px-[4px] mt-[8px]">
+               <app-skeleton className="min-h-[320px] h-full" />
+            </div>
+            } }
+         </div>
          }
       </div>
    </div>

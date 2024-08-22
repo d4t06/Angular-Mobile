@@ -3,20 +3,20 @@ import { CategoryStore } from '@/app/stores/category.store';
 import { Component, inject } from '@angular/core';
 import { SkeletonComponent } from '../../share/components/skeleton/skeleton.component';
 import { ProductStore } from '@/app/stores/product.store';
-import { NoProductComponent } from '../../share/components/no-product/no-product.component';
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
 import { newArray } from '@/app/share/utils/appHelper';
 import { CurrentCategory } from '@/app/services/current-cateogory.service';
 import { SortComponent } from '../../components/sort/sort.component';
 import { ButtonComponent } from '../../share/components/button/button.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NoResultComponent } from '@/app/share/components/no-result/no-product.component';
 
 @Component({
    selector: 'app-search',
    standalone: true,
    imports: [
       SkeletonComponent,
-      NoProductComponent,
+      NoResultComponent,
       ProductItemComponent,
       SortComponent,
       ButtonComponent,

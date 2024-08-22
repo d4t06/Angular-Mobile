@@ -5,10 +5,10 @@ import { SkeletonComponent } from '../../share/components/skeleton/skeleton.comp
 import { ProductStore } from '@/app/stores/product.store';
 import { GetProductService } from '@/app/services/get-product.service';
 import { ActivatedRoute } from '@angular/router';
-import { NoProductComponent } from '../../share/components/no-product/no-product.component';
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
 import { newArray } from '@/app/share/utils/appHelper';
 import { CurrentCategory } from '@/app/services/current-cateogory.service';
+import { NoResultComponent } from '@/app/share/components/no-result/no-product.component';
 
 @Component({
    selector: 'app-home',
@@ -16,7 +16,7 @@ import { CurrentCategory } from '@/app/services/current-cateogory.service';
    imports: [
       SliderComponent,
       SkeletonComponent,
-      NoProductComponent,
+      NoResultComponent,
       ProductItemComponent,
    ],
    providers: [GetProductService, CurrentCategory],
@@ -36,7 +36,7 @@ export class HomeComponent {
    ngOnInit() {
       this.categoryStore.loadingSubj.subscribe(() => {
          const homeCategory = this.categoryStore.categories.find(
-            c => c.category_ascii === 'home'
+            c => c.name_ascii === 'home'
          );
          if (homeCategory)
             this.sliderImages = homeCategory.category_slider.slider.slider_images;

@@ -8,8 +8,8 @@ import { SkeletonComponent } from '../../share/components/skeleton/skeleton.comp
    template: `
       @for (key of newArray(3); track $index) {
          <div class="mb-8 space-y-4">
-            <app-skeleton myClass="w-[200px] rounded-lg h-[28px] max-w-[30%]" />
-            <app-skeleton myClass="mt-2 w-full rounded-xl h-[200px]" />
+            <app-skeleton className="w-[200px] rounded-lg h-[28px] max-w-[30%]" />
+            <app-skeleton className="mt-2 w-full rounded-xl h-[200px]" />
          </div>
       }
    `,

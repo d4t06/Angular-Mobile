@@ -66,7 +66,7 @@
             <div [class]="classes.searchResultContainer">
                @for (p of searchResult; track $index) {
                   <div
-                     (click)="handleProductDetail(p.product_ascii)"
+                     (click)="handleProductDetail(p.id)"
                      class="flex items-start cursor-pointer border-l-[4px] border-transparent hover:border-[#cd1818] hover:translate-x-1 transition-all">
                      <div class="h-[60px] w-[60px] flex-shrink-0">
                         <img class="w-[60px]" [src]="p.image_url" alt="" />
@@ -74,7 +74,7 @@
 
                      <div class="ml-3 flex flex-col">
                         <h5 class="text-sm font-medium line-clamp-1">
-                           {{ p.product }}
+                           {{ p.name }}
                         </h5>
 
                         <h5 class="text-[#cd1818] font-medium line-clamp-1">

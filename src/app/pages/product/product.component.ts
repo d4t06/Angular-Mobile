@@ -4,7 +4,6 @@ import { ProductStore } from '../../stores/product.store';
 import { CurrentCategory } from '../../services/current-cateogory.service';
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
 import { AuthStore } from '../../stores/auth.store';
-import { NoProductComponent } from '@/app/share/components/no-product/no-product.component';
 import { ProductSkeletonComponent } from '@/app/share/components/skeleton/product-skeleton/product-skeleton.component';
 import { SkeletonComponent } from '@/app/share/components/skeleton/skeleton.component';
 import { newArray } from '@/app/share/utils/appHelper';
@@ -16,6 +15,7 @@ import { ButtonComponent } from '../../share/components/button/button.component'
 import { Subscription } from 'rxjs';
 import { PushFrameComponent } from '../../share/components/push-frame/push-frame.component';
 import { SliderComponent } from '../../components/slider/slider.component';
+import { NoResultComponent } from '@/app/share/components/no-result/no-product.component';
 
 @Component({
    selector: 'app-product',
@@ -24,7 +24,6 @@ import { SliderComponent } from '../../components/slider/slider.component';
    providers: [GetProductService, CurrentCategory],
    imports: [
       ProductItemComponent,
-      NoProductComponent,
       ProductSkeletonComponent,
       SkeletonComponent,
       SortComponent,
@@ -32,6 +31,7 @@ import { SliderComponent } from '../../components/slider/slider.component';
       ButtonComponent,
       PushFrameComponent,
       SliderComponent,
+      NoResultComponent
    ],
 })
 export class ProductComponent {

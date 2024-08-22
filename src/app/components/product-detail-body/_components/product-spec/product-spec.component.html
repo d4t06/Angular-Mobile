@@ -1,9 +1,9 @@
 <app-push-frame>
    @if (productDetail.status.getValue() === 'loading') {
-      <app-skeleton myClass="pt-[70%] rounded-lg mb-[20px]" />
-      <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
-      <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
-      <app-skeleton myClass="w-full h-[34px] mb-[10px]" />
+      <app-skeleton className="pt-[70%] rounded-lg mb-[20px]" />
+      <app-skeleton className="w-full h-[34px] mb-[10px]" />
+      <app-skeleton className="w-full h-[34px] mb-[10px]" />
+      <app-skeleton className="w-full h-[34px] mb-[10px]" />
    }
    @if (productDetail.status.getValue() === 'successful' && productDetail.product) {
       <img
@@ -18,7 +18,7 @@
                   <tr class="group">
                      <td
                         class="group-even:bg-[#f3f4f5] w-[40%] text-[#3f3f3f] font-medium rounded-[6px_0_0_6px]">
-                        {{ attribute?.attribute || '---' }}
+                        {{ attribute?.name || '---' }}
                      </td>
                      <td
                         class="group-even:bg-[#f3f4f5] text-[#3f3f3f] text-sm font-medium leading-[1.6] rounded-[0_6px_6px_0]">

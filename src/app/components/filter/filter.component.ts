@@ -34,7 +34,7 @@ const classes = {
          ">
          @if (categoryLoading.getValue()) {
             @for (key of newArray(5); track $index) {
-               <app-skeleton myClass="h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2" />
+               <app-skeleton className="h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2" />
             }
          } @else {
             <app-button
@@ -58,7 +58,7 @@ const classes = {
                      active: filterState.brands.includes(b),
                   }"
                   (click)="handleFilter({ by: 'brands', value: b })">
-                  {{ b.brand }}
+                  {{ b.name }}
                </app-button>
             }
          }
@@ -72,7 +72,7 @@ const classes = {
          ">
          @if (categoryLoading.getValue()) {
             @for (key of newArray(5); track $index) {
-               <app-skeleton myClass="h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2" />
+               <app-skeleton className="h-[28px] w-[100px] flex-shrink-0 mt-2 ml-2" />
             }
          } @else {
             <app-button
