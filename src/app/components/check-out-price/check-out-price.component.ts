@@ -23,6 +23,6 @@ export class CheckOutPriceComponent {
    }
 
    classes = {
-      h5: 'text-[14px] md:text-[16px] text-[#3f3f3f] font-[500]',
+      h5: 'text-medium text-[#3f3f3f] font-[500]',
    };
 }

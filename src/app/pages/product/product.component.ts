@@ -31,7 +31,7 @@ import { NoResultComponent } from '@/app/share/components/no-result/no-product.c
       ButtonComponent,
       PushFrameComponent,
       SliderComponent,
-      NoResultComponent
+      NoResultComponent,
    ],
 })
 export class ProductComponent {

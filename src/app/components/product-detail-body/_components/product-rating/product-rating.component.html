@@ -1,10 +1,10 @@
-<div class="flex flex-col sm:flex-row sm:justify-between">
+<div class="flex justify-between">
    <app-title className="text-[#cd1818]">
       <svg
          xmlns="http://www.w3.org/2000/svg"
          fill="none"
          viewBox="0 0 24 24"
-         stroke-width="2"
+         stroke-width="1.5"
          stroke="currentColor"
          class="w-6">
          <path
@@ -16,22 +16,25 @@
       <span>Rating</span>
    </app-title>
 
-   @if(authStore.user) {
-   <app-button (myClick)="openModal()" [props]="{ class: 'space-x-1' }">
-      <svg
-         xmlns="http://www.w3.org/2000/svg"
-         fill="none"
-         viewBox="0 0 24 24"
-         stroke-width="2"
-         stroke="currentColor"
-         class="w-5">
-         <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
-      </svg>
-      <span>Write rating</span>
-   </app-button>
+   @if (authStore.user) {
+      <app-button
+         (myClick)="openModal()"
+         [props]="{ class: 'space-x-1 px-2 h-full', size: 'clear' }">
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6">
+            <path
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+         </svg>
+
+         <span class="hidden sm:block">Write rating</span>
+      </app-button>
    }
 </div>
 
@@ -39,49 +42,60 @@
    <p class="font-medium text-[#3f3f3f]">Average Rating</p>
 
    @if (ratingAverage.status === 'loading') {
-   <app-skeleton className="h-[52px] my-1 w-[200px]" />
-   <app-skeleton className="h-[18px] my-1 w-[100px]" />
-   } @if (ratingAverage.status !== 'loading') {
-   <div class="font-bold text-[50px] leading-[60px] text-[#cd1818]">
-      @if (ratingAverage.average) {
-      <span>{{ ratingAverage.average.toFixed(0) }} / 5</span>
-      } @else {
-      <span>- /-</span>
-      }
-   </div>
-   } @if (ratingAverage.status !== 'loading') {
-   <p class="text-[#3f3f3f] font-medium">{{ ratingStore.count }} ratings</p>
+      <app-skeleton className="h-[52px] my-1 w-[200px]" />
+      <app-skeleton className="h-[18px] my-1 w-[100px]" />
+   }
+   @if (ratingAverage.status !== 'loading') {
+      <div class="font-semibold text-[50px] leading-[60px] text-[#cd1818]">
+         @if (ratingAverage.average) {
+            <span>{{ ratingAverage.average.toFixed(0) }} / 5</span>
+         } @else {
+            <span>- /-</span>
+         }
+      </div>
+   }
+   @if (ratingAverage.status !== 'loading') {
+      <p class="text-[#3f3f3f] font-medium">{{ ratingStore.count }} ratings</p>
    }
 </div>
 
 <div class="mt-5 space-y-5">
-   @if ( (ratingStore.status === 'success' && !ratingStore.ratings.length) ||
-   ratingStore.status === 'error' ) {
-   <app-no-result />} @else { @for (rating of ratingStore.ratings; track $index) {
-   <app-rating-item [rating]="rating" />
-   } @if ( ratingStore.status === 'loading' || ratingStore.status === 'more-loading' ) {
-   @for (key of newArray(3); track $index) {
-   <div class="flex">
-      <app-skeleton className="w-[44px] h-[44px] !rounded-full flex-shrink-0" />
-      <div class="ml-[10px]">
-         <app-skeleton className="h-[20px] w-[200px] max-w-[30vw] rounded-[4px]" />
-         <app-skeleton className="h-[24px] mt-2 w-[400px] max-w-[50vw] rounded-[4px]" />
-         <app-skeleton className="h-[18px] mt-2 w-[100px] max-w-[30vw] rounded-[4px]" />
-      </div>
-   </div>
-   } }
+   @if (
+      (ratingStore.status === 'success' && !ratingStore.ratings.length) ||
+      ratingStore.status === 'error'
+   ) {
+      <app-no-result />
+   } @else {
+      @for (rating of ratingStore.ratings; track $index) {
+         <app-rating-item [rating]="rating" />
+      }
+      @if (ratingStore.status === 'loading' || ratingStore.status === 'more-loading') {
+         @for (key of newArray(3); track $index) {
+            <div class="flex">
+               <app-skeleton className="w-[44px] h-[44px] !rounded-full flex-shrink-0" />
+               <div class="ml-[10px]">
+                  <app-skeleton
+                     className="h-[20px] w-[200px] max-w-[30vw] rounded-[4px]" />
+                  <app-skeleton
+                     className="h-[24px] mt-2 w-[400px] max-w-[50vw] rounded-[4px]" />
+                  <app-skeleton
+                     className="h-[18px] mt-2 w-[100px] max-w-[30vw] rounded-[4px]" />
+               </div>
+            </div>
+         }
+      }
 
-   <div class="text-center mt-4">
-      <app-button
-         (myClick)="handleGetMore()"
-         [props]="{
-            disabled:
-               ratingStore.count <= ratingStore.page * ratingStore.size ||
-               ratingStore.status === 'more-loading'
-         }"
-         >More</app-button
-      >
-   </div>
+      <div class="text-center mt-4">
+         <app-button
+            (myClick)="handleGetMore()"
+            [props]="{
+               disabled:
+                  ratingStore.count <= ratingStore.page * ratingStore.size ||
+                  ratingStore.status === 'more-loading',
+            }"
+            >More</app-button
+         >
+      </div>
    }
 </div>
 

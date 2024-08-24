@@ -26,14 +26,20 @@
 
          <div class="mt-2">
             <app-push-frame [props]="{ pushAble: 'clear' }">
-               <div class="space-y-5">
-                  @for (cart of cartStore.cartItems; track $index) {
-                     <app-cart-item
-                        [cartItem]="cart"
-                        [index]="$index"
-                        [checked]="cartStore.selectedCartItemId.includes(cart.item.id)" />
-                  }
-               </div>
+               @if (cartStore.cartItems.length) {
+                  <div class="space-y-5">
+                     @for (cart of cartStore.cartItems; track $index) {
+                        <app-cart-item
+                           [cartItem]="cart"
+                           [index]="$index"
+                           [checked]="
+                              cartStore.selectedCartItemId.includes(cart.item.id)
+                           " />
+                     }
+                  </div>
+               } @else {
+                  <app-no-result desc="¯\_(ツ)_/¯" />
+               }
             </app-push-frame>
          </div>
       </div>

@@ -15,7 +15,7 @@ import { PushFrameComponent } from '../../../../../share/components/push-frame/p
                <app-skeleton className="w-[70px] h-[20px]" />
                <div class="flex flex-wrap -mx-1">
                   @for (key of newArray(2); track $index) {
-                     <div class="w-1/3 px-1 mt-1">
+                     <div class="px-1 mt-1 w-1/2 sm:w-1/3 md:w-1/2 lg:w-1/3">
                         <app-skeleton className="h-[60px] " />
                      </div>
                   }
@@ -26,7 +26,7 @@ import { PushFrameComponent } from '../../../../../share/components/push-frame/p
                <app-skeleton className="w-[70px] h-[20px]  mt-[14px]" />
                <div class="flex flex-wrap -mx-1">
                   @for (key of newArray(2); track $index) {
-                     <div class="w-1/3 px-1 mt-1">
+                     <div class="px-1 mt-1 w-1/2 sm:w-1/3 md:w-1/2 lg:w-1/3">
                         <app-skeleton className="h-[60px] " />
                      </div>
                   }

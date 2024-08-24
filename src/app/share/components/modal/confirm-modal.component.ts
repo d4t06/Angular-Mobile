@@ -5,6 +5,7 @@ import { ButtonComponent } from '../button/button.component';
    standalone: true,
    selector: 'app-confirm-modal',
    template: `
+      <div class="w-[400px] max-w-[85vw]"></div>
       <ng-content />
       <p class="font-medium text-lg text-red-500">
          {{ desc || 'This action cannot be undone' }}

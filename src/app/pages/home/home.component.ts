@@ -13,12 +13,7 @@ import { NoResultComponent } from '@/app/share/components/no-result/no-product.c
 @Component({
    selector: 'app-home',
    standalone: true,
-   imports: [
-      SliderComponent,
-      SkeletonComponent,
-      NoResultComponent,
-      ProductItemComponent,
-   ],
+   imports: [SliderComponent, SkeletonComponent, NoResultComponent, ProductItemComponent],
    providers: [GetProductService, CurrentCategory],
    templateUrl: './home.component.html',
 })

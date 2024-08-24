@@ -1,7 +1,13 @@
 <div class="flex items-center" [class.disabled]="action.isFetching">
    <div class="flex flex-grow">
       <div [class]="classes.imageFrame">
-         <img [src]="cartItem.item.product.image_url" class="w-full h-auto" alt="" />
+         <img
+            [src]="
+               cartItem.item.product.image_url ||
+               'https://d4t06.github.io/Vue-Mobile/assets/search-empty-ChRLxitn.png'
+            "
+            class="w-full h-auto"
+            alt="" />
 
          <button
             [class]="

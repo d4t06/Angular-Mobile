@@ -9,23 +9,22 @@ import { NoResultComponent } from '../../../../share/components/no-result/no-pro
 import { RatingItemComponent } from '../../../rating-item/rating-item.component';
 import { ButtonComponent } from '../../../../share/components/button/button.component';
 import { newArray } from '@/app/share/utils/appHelper';
-import { ModalComponent } from "../../../../share/components/modal/modal.component";
-import { AddRatingModalComponent } from "./_components/add-rating-modal/add-rating-modal.component";
+import { ModalComponent } from '../../../../share/components/modal/modal.component';
+import { AddRatingModalComponent } from './_components/add-rating-modal/add-rating-modal.component';
 import { AuthStore } from '@/app/stores/auth.store';
-
 
 @Component({
    selector: 'app-product-rating',
    standalone: true,
    imports: [
-    TitleComponent,
-    SkeletonComponent,
-    NoResultComponent,
-    RatingItemComponent,
-    ButtonComponent,
-    ModalComponent,
-    AddRatingModalComponent
-],
+      TitleComponent,
+      SkeletonComponent,
+      NoResultComponent,
+      RatingItemComponent,
+      ButtonComponent,
+      ModalComponent,
+      AddRatingModalComponent,
+   ],
    providers: [GetRatingService, RatingAverage],
    templateUrl: './product-rating.component.html',
    styles: ``,
@@ -33,14 +32,13 @@ import { AuthStore } from '@/app/stores/auth.store';
 export class ProductRatingComponent {
    ratingStore = inject(RatingStore);
    productDetail = inject(ProductDetailStore);
-   authStore = inject(AuthStore)
+   authStore = inject(AuthStore);
 
    getRating = inject(GetRatingService);
    ratingAverage = inject(RatingAverage);
 
    @ViewChild(ModalComponent, { static: true })
    modalComponent: ModalComponent;
-
 
    openModal() {
       this.modalComponent.open();
@@ -54,7 +52,10 @@ export class ProductRatingComponent {
 
    handleGetMore() {
       if (!this.productDetail.product) return;
-      this.getRating.getProductRatings({productId: this.productDetail.product.id, page: this.ratingStore.page + 1})
+      this.getRating.getProductRatings({
+         productId: this.productDetail.product.id,
+         page: this.ratingStore.page + 1,
+      });
    }
 
    ngOnInit() {

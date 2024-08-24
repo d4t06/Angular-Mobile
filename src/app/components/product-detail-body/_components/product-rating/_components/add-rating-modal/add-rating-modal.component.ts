@@ -46,8 +46,8 @@ export class AddRatingModalComponent {
    handleFinish() {
       this.showThankYou = false;
       this.rate = 5;
-      this.ratingContent = ''
-      this.closeModal.emit()
+      this.ratingContent = '';
+      this.closeModal.emit();
    }
 
    newArray = newArray;

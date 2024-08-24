@@ -1,3 +1,5 @@
-<div class="w-[44px] h-[44px] bg-[#ccc] rounded-full flex items-center justify-center">
-   <span class="text-[#333] text-2xl">{{ letter.toUpperCase() }}</span>
+<div
+   [style]="{ backgroundColor: generateHsl(name) }"
+   class="w-[44px] h-[44px] rounded-full flex items-center justify-center">
+   <span class="text-white text-xl">{{ name.charAt(0).toUpperCase() }}</span>
 </div>

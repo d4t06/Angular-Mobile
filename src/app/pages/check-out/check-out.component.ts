@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { CartStore } from '@/app/stores/cart.store';
 import { CartItemComponent } from '@/app/components/cart-item/cart-item.component';
 import { CheckOutAddressComponent } from '../../components/check-out-address/check-out-address.component';
+import { NoResultComponent } from '../../share/components/no-result/no-product.component';
 
 @Component({
    standalone: true,
@@ -23,6 +24,7 @@ import { CheckOutAddressComponent } from '../../components/check-out-address/che
       CheckOutSkeleton,
       CartItemComponent,
       CheckOutAddressComponent,
+      NoResultComponent,
    ],
    providers: [GetCartService],
 })
