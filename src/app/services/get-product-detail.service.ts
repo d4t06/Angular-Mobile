@@ -19,7 +19,9 @@ export class GetProductDetailService {
    }
 
    getProduct() {
-      return this.http
+      this.productDetailStore.status.next('loading');
+
+      this.http
          .get<{
             data: ProductDetail;
          }>(`${this.PRODUCT_URL}/${this.routerParams['productId']}`)
